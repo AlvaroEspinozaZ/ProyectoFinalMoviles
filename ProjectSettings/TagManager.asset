@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - White
+  - Black
+  - StructureWhite
+  - StructureBlack
   - 
   - 
   - 
