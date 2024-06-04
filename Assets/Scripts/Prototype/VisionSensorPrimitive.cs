@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VisionSensorPrimitive : MonoBehaviour
@@ -16,6 +14,8 @@ public class VisionSensorPrimitive : MonoBehaviour
     public GameObject objectCollision;
 
     public bool isObjectDetected = false;
+    public bool isCurrentMove = false;
+    Vector3 destination;
 
     private void Start()
     {
@@ -24,6 +24,11 @@ public class VisionSensorPrimitive : MonoBehaviour
 
     private void Update()
     {
+        if (isCurrentMove && !isObjectDetected)
+        {
+            MoveToDestination();
+        }
+
         if (!isObjectDetected)
         {
             objectCollision = null;
@@ -54,17 +59,54 @@ public class VisionSensorPrimitive : MonoBehaviour
 
     void MoveTowardsObject()
     {
+        isCurrentMove = false;
         Vector3 direction = (objectCollision.transform.position - transform.position).normalized;
+        direction.y = 0;
+
         float distance = Vector3.Distance(transform.position, objectCollision.transform.position);
 
         if (distance > stopDistance)
         {
             transform.position += direction * speed * Time.deltaTime;
         }
+
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
+    void MoveToDestination()
+    {
+        Vector3 direction = (destination - transform.position).normalized;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
+        {
+            float distance = Vector3.Distance(transform.position, destination);
+            if (distance > stopDistance)
+            {
+                Vector3 movement = direction * speed * Time.deltaTime;
+                transform.position += movement;
+
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, direction, out hit, distance, detectableLayers))
+                {
+                    isCurrentMove = false;
+                }
+            }
+            else
+            {
+                isCurrentMove = false;
+            }
+        }
+    }
+
+    public void SelectDestination(Vector3 position)
+    {
+        destination = position;
+        isCurrentMove = true;
+    }
 }
+
