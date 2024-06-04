@@ -10,11 +10,12 @@ public class VisionSensorPrimitive : MonoBehaviour
     public float visionRange = 4.0f;
     public float speed = 2.0f;
     public float stopDistance = 2.0f;
+    public float rotationSpeed = 5.0f;
 
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
 
-    private bool isObjectDetected = false;
+    public bool isObjectDetected = false;
 
     private void Start()
     {
@@ -59,6 +60,11 @@ public class VisionSensorPrimitive : MonoBehaviour
         if (distance > stopDistance)
         {
             transform.position += direction * speed * Time.deltaTime;
+        }
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 }
