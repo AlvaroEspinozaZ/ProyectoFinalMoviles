@@ -101,6 +101,11 @@ public class VisionSensorPrimitive : MonoBehaviour
                 isCurrentMove = false;
             }
         }
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     public void SelectDestination(Vector3 position)
