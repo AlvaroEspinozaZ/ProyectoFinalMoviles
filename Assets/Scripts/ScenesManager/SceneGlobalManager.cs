@@ -28,9 +28,7 @@ namespace ScenesManager
                 Destroy(this.gameObject);
 
             Instance = this;
-
             _AsyncProcesses = AsyncProcess();
-
             _loadedScenes = new();
             _loadingProcesses = new();
         }
@@ -187,6 +185,10 @@ namespace ScenesManager
         private float FunctionThatReturnsRandomNumber()
         {
             return UnityEngine.Random.Range(-5f, 5f);
+        }
+        public void ExitGame()
+        {
+            Application.Quit();
         }
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59ecc3b1d4d3e345bf3f4ffd248e056, type: 3}
   m_Name: Selection
   m_EditorClassIdentifier: 
-  sceneName: Selections
+  sceneName: Selection
   isAditive: 0
   isInactive: 0
