@@ -4,13 +4,22 @@ public class PrefabMovement : MonoBehaviour
 {
     public Animator animator; 
     public VisionSensorPrimitive visionSensor; 
-    public float characterHealth = 100f; 
-
+    public float characterHealth = 100f;
+    NPCController _nPCController;
+    Rigidbody _rgb;
+    private void Start()
+    {
+        _nPCController = GetComponent<NPCController>();
+        _rgb = GetComponent<Rigidbody>();
+    }
     private void Update()
     {
         if (characterHealth <= 0)
         {
+            _rgb.isKinematic = true;
             animator.SetBool("IsDead", true);
+            _nPCController.Muerte(1.5f);
+
         }
         else
         {
