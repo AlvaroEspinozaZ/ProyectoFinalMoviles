@@ -5,11 +5,11 @@ public class PrefabMovement : MonoBehaviour
     public Animator animator; 
     public VisionSensorPrimitive visionSensor; 
     public float characterHealth = 100f;
-    NPCController _nPCController;
+    DOTController _nPCController;
     Rigidbody _rgb;
     private void Start()
     {
-        _nPCController = GetComponent<NPCController>();
+        _nPCController = GetComponent<DOTController>();
         _rgb = GetComponent<Rigidbody>();
     }
     private void Update()
