@@ -13,6 +13,7 @@ public class Test : MonoBehaviour
     [SerializeField] LayerMask touchableLayers;
     InputAction.CallbackContext currentContext;
     [SerializeField] private VisionSensorPrimitive currentObject;
+    [SerializeField] private GameObject prefabAllied;
     private float maxTimeDT = 0.2f;
     private float minTimePress = 0.15f;
     private float swipeLoopTime = 0.2f;
@@ -108,7 +109,7 @@ public class Test : MonoBehaviour
                     if (currentObject != null)
                         currentObject.SelectDestination(hit.point);
                     else
-                        Debug.Log("No hay objeto seleccionado");
+                        Instantiate(prefabAllied, new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
                     break;
                 case 6: //Player
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();

@@ -13,6 +13,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
 
+    public Health currentEnemy;
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
     Vector3 destination;
@@ -44,6 +45,7 @@ public class VisionSensorPrimitive : MonoBehaviour
         if (!isObjectDetected && ((1 << other.gameObject.layer) & detectableLayers) != 0)
         {
             objectCollision = other.gameObject;
+            currentEnemy = objectCollision.GetComponent<Health>();
             isObjectDetected = true;
         }
     }
@@ -100,6 +102,11 @@ public class VisionSensorPrimitive : MonoBehaviour
             {
                 isCurrentMove = false;
             }
+        }
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
