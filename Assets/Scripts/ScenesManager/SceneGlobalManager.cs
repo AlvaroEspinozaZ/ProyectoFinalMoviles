@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace ScenesManager
 {
     public class SceneGlobalManager : MonoBehaviour
@@ -53,7 +53,10 @@ namespace ScenesManager
             _loadedScenes.Add(SceneToLoad);
             AsyncProncessLoad(SceneToLoad);
         }
-
+        public void ChangeScene(SceneConfiguration SceneToLoad)
+        {
+            SceneManager.LoadScene(SceneToLoad.SceneName);
+        }
         public void LoadScene(SceneConfiguration SceneToLoad)
         {
             _loadedScenes.Add(SceneToLoad);
