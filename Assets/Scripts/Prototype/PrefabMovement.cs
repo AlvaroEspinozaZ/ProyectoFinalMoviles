@@ -4,10 +4,11 @@ public class PrefabMovement : MonoBehaviour
 {
     public Animator animator; 
     public VisionSensorPrimitive visionSensor;
+    public int  damage=10;
     private Health myHealth;
     Rigidbody _rgb;
-    private float tiempoUltimoAtaque;
-    public float intervaloAtaque = 1.5f;
+    private float timeToLastHit;
+    public float intervalAttack = 1.5f;
  
     private void Start()
     {
@@ -39,7 +40,7 @@ public class PrefabMovement : MonoBehaviour
             {
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttak", true);
-                Atacar(intervaloAtaque, visionSensor.currentEnemy);
+                Attack(intervalAttack, visionSensor.currentEnemy);
             }
             else
             {
@@ -59,7 +60,7 @@ public class PrefabMovement : MonoBehaviour
             animator.SetBool("IsAttak", false);
         }
     }
-    void Atacar(float timeToAttack, Health enemy)
+    void Attack(float timeToAttack, Health enemy)
     {
         if (enemy.GetComponent<VisionSensorPrimitive>()!= null)
         {
@@ -71,17 +72,16 @@ public class PrefabMovement : MonoBehaviour
                 tmp.isObjectDetected = true;
             }
         }
-        if ((Time.time - tiempoUltimoAtaque) % (timeToAttack + 1) >= timeToAttack)
+        if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack)
         {
 
-            enemy.characterHealth -= 10;
+            enemy.characterHealth -= damage;
             if (enemy.characterHealth <= 0)
             {
-                enemy.Muerte(1.1f);
+                enemy.Died(1.1f);
 
             }
-            tiempoUltimoAtaque = Time.time;
-            
+            timeToLastHit = Time.time;            
         }        
     }
 }

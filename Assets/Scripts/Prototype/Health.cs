@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     {
         
     }
-    public async void Muerte(float time)
+    public async void Died(float time)
     {
         Vector3 tmp = new Vector3(transform.position.x, -10, transform.position.z);
         List<Task> currentTask = new();
