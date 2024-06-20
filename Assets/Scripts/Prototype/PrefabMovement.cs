@@ -4,14 +4,13 @@ public class PrefabMovement : MonoBehaviour
 {
     public Animator animator; 
     public VisionSensorPrimitive visionSensor;
-    DOTController _nPCController;
     private Health myHealth;
     Rigidbody _rgb;
     private float tiempoUltimoAtaque;
     public float intervaloAtaque = 1.5f;
+ 
     private void Start()
     {
-        _nPCController = GetComponent<DOTController>();
         _rgb = GetComponent<Rigidbody>();
         myHealth = GetComponent<Health>();
     }
@@ -21,7 +20,6 @@ public class PrefabMovement : MonoBehaviour
         {
             _rgb.isKinematic = true;
             animator.SetBool("IsDead", true);
-            _nPCController.Muerte(1.5f);
 
         }
         else
@@ -63,14 +61,27 @@ public class PrefabMovement : MonoBehaviour
     }
     void Atacar(float timeToAttack, Health enemy)
     {
-        
+        if (enemy.GetComponent<VisionSensorPrimitive>()!= null)
+        {
+            VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
+            if(tmp.currentEnemy == null)
+            {
+                tmp.objectCollision = gameObject;
+                tmp.currentEnemy = myHealth;
+                tmp.isObjectDetected = true;
+            }
+        }
         if ((Time.time - tiempoUltimoAtaque) % (timeToAttack + 1) >= timeToAttack)
         {
 
             enemy.characterHealth -= 10;
+            if (enemy.characterHealth <= 0)
+            {
+                enemy.Muerte(1.1f);
+
+            }
             tiempoUltimoAtaque = Time.time;
-            Debug.Log("ataco");
-        }
-        Debug.Log(enemy.characterHealth);
+            
+        }        
     }
 }

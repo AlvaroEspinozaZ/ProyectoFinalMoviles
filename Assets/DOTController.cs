@@ -28,5 +28,7 @@ public class DOTController : MonoBehaviour
         currentTask.Add( transform.DOScale(Vector3.zero, time/3).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
         currentTask.Add(transform.DOMove(tmp, time).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
         await Task.WhenAll(currentTask);
+        Debug.Log("contandos" + Time.time);
+        Destroy(gameObject, time);
     }
 }

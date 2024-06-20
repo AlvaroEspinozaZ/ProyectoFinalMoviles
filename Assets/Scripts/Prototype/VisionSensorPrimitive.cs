@@ -47,6 +47,12 @@ public class VisionSensorPrimitive : MonoBehaviour
             objectCollision = other.gameObject;
             currentEnemy = objectCollision.GetComponent<Health>();
             isObjectDetected = true;
+            if (currentEnemy.isDeath)
+            {
+                isObjectDetected = false;
+                visionCollider.enabled = false;
+            }
+            visionCollider.enabled = true;
         }
     }
 
