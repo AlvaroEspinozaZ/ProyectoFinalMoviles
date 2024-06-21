@@ -33,20 +33,26 @@ public class PrefabMovement : MonoBehaviour
     {
         if (visionSensor.isObjectDetected)
         {
-            float distance = Vector3.Distance(
+            if (visionSensor.objectCollision != null)
+            {
+                float distance = Vector3.Distance(
             new Vector3(transform.position.x, 0, transform.position.z),
             new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
-            if (distance <= visionSensor.stopDistance)
-            {
-                animator.SetBool("IsMove", false);
-                animator.SetBool("IsAttak", true);
-                Attack(intervalAttack, visionSensor.currentEnemy);
+                if (distance <= visionSensor.stopDistance)
+                {
+                    animator.SetBool("IsMove", false);
+                    animator.SetBool("IsAttak", true);
+                    Attack(intervalAttack, visionSensor.currentEnemy);
+                }
+                else
+                {
+                    animator.SetBool("IsMove", true);
+                    animator.SetBool("IsAttak", false);
+                }
             }
-            else
-            {
-                animator.SetBool("IsMove", true);
-                animator.SetBool("IsAttak", false);
-            }
+            else visionSensor.isObjectDetected = false;
+
+
         }
         else
         {
@@ -78,8 +84,10 @@ public class PrefabMovement : MonoBehaviour
             enemy.characterHealth -= damage;
             if (enemy.characterHealth <= 0)
             {
-                enemy.Died(1.1f);
-
+                if (enemy.gameObject != null)
+                {
+                    enemy.Died(1.1f);
+                }
             }
             timeToLastHit = Time.time;            
         }        

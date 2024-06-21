@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -399,12 +399,17 @@ MonoBehaviour:
   totalTime: 0
   swipeTimer: 0
   allowIncrease: 0
-  mainCamera: {fileID: 1291302797}
   touchableLayers:
     serializedVersion: 2
     m_Bits: 72
   currentObject: {fileID: 0}
   prefabAllied: {fileID: 2364417382502413473, guid: 98afe648f13273c4caf447b5579d750e, type: 3}
+  mainCamera: {fileID: 1291302797}
+  velocityMainCamera: 10
+  easeDOT: 0
+  delay: 5
+  posfinal: {x: 22.53, y: 16.6, z: 27}
+  target: {fileID: 230276635}
 --- !u!4 &110162323
 Transform:
   m_ObjectHideFlags: 0
@@ -417,7 +422,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 230276635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191692294
@@ -554,6 +560,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191692294}
   m_CullTransparentMesh: 1
+--- !u!1 &230276634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230276635}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &230276635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230276634}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9, y: 0, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110162323}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302801467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rey (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6550108731142129760, guid: 354e437c3ef497246ba442c0870a50a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1466,6 +1507,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465953558817079342, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: stopDistance
@@ -1870,7 +1915,7 @@ Transform:
   m_GameObject: {fileID: 1291302795}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16428064, y: -0.68775856, z: 0.16428067, w: 0.68775856}
-  m_LocalPosition: {x: 20, y: 16.6, z: 0}
+  m_LocalPosition: {x: 28.4, y: 16.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2005,6 +2050,10 @@ PrefabInstance:
     - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
       propertyPath: m_Name
       value: Peon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2734,6 +2783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reyna (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7268779247441332405, guid: 10b8b15f0d9dde743b0a8c2eefe28538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2920,6 +2973,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3943,9 +4000,9 @@ SceneRoots:
   - {fileID: 2809846317146557321}
   - {fileID: 964730713223938279}
   - {fileID: 4233752639061282257}
-  - {fileID: 110162323}
   - {fileID: 1949288654}
   - {fileID: 1813568313}
   - {fileID: 444433370}
   - {fileID: 1448221335}
   - {fileID: 814924289}
+  - {fileID: 110162323}
