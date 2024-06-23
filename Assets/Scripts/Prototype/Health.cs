@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using DG.Tweening;
+using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 
-    public float characterHealth = 100f;
+    public int characterHealth = 100;
+    private int maxHealth;
     public bool isDeath => characterHealth <= 0;
-    void Update()
+
+    [Header("UI Character")]
+    public Image HealthBar;
+
+    private void Start()
     {
-        
+        maxHealth = characterHealth;
     }
     public async void Died(float time)
     {
@@ -21,5 +27,10 @@ public class Health : MonoBehaviour
         await Task.WhenAll(currentTask);
         //Debug.Log("contandos" + Time.time);
         Destroy(gameObject, time);
+    }
+    public void UpdateCharacterUI()
+    {
+        if (HealthBar == null) return;
+        HealthBar.fillAmount = (float)characterHealth/ (float)maxHealth;
     }
 }

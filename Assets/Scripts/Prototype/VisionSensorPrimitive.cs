@@ -9,6 +9,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public float speed = 2.0f;
     public float stopDistance = 2.0f;
     public float rotationSpeed = 5.0f;
+    public bool isTower = false;
 
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
@@ -20,7 +21,8 @@ public class VisionSensorPrimitive : MonoBehaviour
 
     private void Start()
     {
-        visionCollider.radius = visionRange;
+        if(visionCollider!=null)
+            visionCollider.radius = visionRange/transform.localScale.x;
     }
 
     private void Update()

@@ -20,7 +20,8 @@ public class PrefabMovement : MonoBehaviour
         if (myHealth.characterHealth <= 0)
         {
             _rgb.isKinematic = true;
-            animator.SetBool("IsDead", true);
+            if(animator!=null)
+                animator.SetBool("IsDead", true);
 
         }
         else
@@ -36,18 +37,28 @@ public class PrefabMovement : MonoBehaviour
             if (visionSensor.objectCollision != null)
             {
                 float distance = Vector3.Distance(
-            new Vector3(transform.position.x, 0, transform.position.z),
-            new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
-                if (distance <= visionSensor.stopDistance)
+                new Vector3(transform.position.x, 0, transform.position.z),
+                new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
+                if (visionSensor.isTower)
                 {
-                    animator.SetBool("IsMove", false);
-                    animator.SetBool("IsAttak", true);
+                    Attack(intervalAttack, visionSensor.currentEnemy);
+                }
+                else if (distance <= visionSensor.stopDistance)
+                {
+                    if (animator != null)
+                    {
+                        animator.SetBool("IsMove", false);
+                        animator.SetBool("IsAttak", true);
+                    }
                     Attack(intervalAttack, visionSensor.currentEnemy);
                 }
                 else
                 {
-                    animator.SetBool("IsMove", true);
-                    animator.SetBool("IsAttak", false);
+                    if(animator != null)
+                    {
+                        animator.SetBool("IsMove", true);
+                        animator.SetBool("IsAttak", false);
+                    }
                 }
             }
             else visionSensor.isObjectDetected = false;
@@ -56,14 +67,21 @@ public class PrefabMovement : MonoBehaviour
         }
         else
         {
-            animator.SetBool("IsMove", false);
-            animator.SetBool("IsAttak", false);
+            if (animator != null)
+            {
+                animator.SetBool("IsMove", false);
+                animator.SetBool("IsAttak", false);
+            }
         }
 
         if (visionSensor.isCurrentMove)
         {
-            animator.SetBool("IsMove", true);
-            animator.SetBool("IsAttak", false);
+            if (animator != null)
+            {
+                animator.SetBool("IsMove", true);
+                animator.SetBool("IsAttak", false);
+            }
+            
         }
     }
     void Attack(float timeToAttack, Health enemy)
@@ -82,6 +100,7 @@ public class PrefabMovement : MonoBehaviour
         {
 
             enemy.characterHealth -= damage;
+            enemy.UpdateCharacterUI();
             if (enemy.characterHealth <= 0)
             {
                 if (enemy.gameObject != null)
