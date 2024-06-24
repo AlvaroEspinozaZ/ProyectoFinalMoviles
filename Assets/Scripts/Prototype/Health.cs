@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class Health : MonoBehaviour
     public int characterHealth = 100;
     private int maxHealth;
     public bool isDeath => characterHealth <= 0;
-
+    private CancellationTokenSource cancellationTokenSource;
     [Header("UI Character")]
     public Image HealthBar;
 
@@ -24,7 +25,7 @@ public class Health : MonoBehaviour
         List<Task> currentTask = new();
         currentTask.Add(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
         currentTask.Add(transform.DOMove(tmp, time).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
-        await Task.WhenAll(currentTask);
+      
         //Debug.Log("contandos" + Time.time);
         Destroy(gameObject, time);
     }
@@ -32,5 +33,14 @@ public class Health : MonoBehaviour
     {
         if (HealthBar == null) return;
         HealthBar.fillAmount = (float)characterHealth/ (float)maxHealth;
+    }
+    public void CancelDied()
+    {
+        cancellationTokenSource?.Cancel();
+    }
+
+    private void OnDestroy()
+    {
+        cancellationTokenSource?.Cancel();
     }
 }
