@@ -146,6 +146,7 @@ MonoBehaviour:
   stopDistance: 0.01
   rotationSpeed: 0
   isTower: 1
+  id: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
@@ -187,6 +188,11 @@ MonoBehaviour:
   visionSensor: {fileID: 2478071633121889386}
   damage: 10
   intervalAttack: 1.5
+  isRange: 1
+  easeDOT: 0
+  bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
+  bullets: []
+  id: 0
 --- !u!54 &6054062385229697321
 Rigidbody:
   m_ObjectHideFlags: 0

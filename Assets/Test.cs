@@ -27,7 +27,11 @@ public class Test : MonoBehaviour
     bool isDoubleTap = false;
     bool isTapped = true;
     bool isPress = false;
-
+    [Header("Armys")]
+    [SerializeField] SpamArmy alfilArmy;
+    [SerializeField] SpamArmy[] alfirArmys;
+    [SerializeField] int id;
+    [SerializeField] int currentId;
     [Header("Camera")]
     [SerializeField] Camera mainCamera;
     [SerializeField] float velocityMainCamera = 0.3f;
@@ -127,7 +131,7 @@ public class Test : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);
         RaycastHit hit;
-
+        alfirArmys = new SpamArmy[5];
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, touchableLayers))
         {
             int layerInt = hit.transform.gameObject.layer;
@@ -135,9 +139,29 @@ public class Test : MonoBehaviour
             {
                 case 3: //Floor
                     if (currentObject != null)
-                        currentObject.SelectDestination(hit.point);
+                    {
+                        //currentObject.SelectDestination(hit.point);
+                        currentId = currentObject.id;
+                        alfilArmy.MoveArmy(hit.point, currentId);
+                    }
                     else
-                        Instantiate(prefabAllied, new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
+                    {
+                        if(id+1 <= alfirArmys.Length)
+                        {
+                            //Instantiate(prefabAllied, new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
+                            SpamArmy tmp = alfilArmy;
+                            alfirArmys[id] = tmp;
+                            alfirArmys[id].Instatiate(hit.point);
+                            id++;
+                            
+                        }
+                        else
+                        {
+                            Debug.Log("Ya no puedes"+ alfirArmys.Length);
+                        }
+                        
+                    }                       
+
                     break;
                 case 6: //Player
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();

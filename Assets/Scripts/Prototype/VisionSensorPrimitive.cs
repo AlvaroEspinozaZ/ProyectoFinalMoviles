@@ -10,7 +10,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public float stopDistance = 2.0f;
     public float rotationSpeed = 5.0f;
     public bool isTower = false;
-
+    public int id;
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
 
