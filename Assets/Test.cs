@@ -132,7 +132,6 @@ public class Test : MonoBehaviour
             int layerInt = hit.transform.gameObject.layer;
             switch (layerInt)
             {
-
                 case 6: //Player
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
                     break;
@@ -141,6 +140,10 @@ public class Test : MonoBehaviour
                         currentObject.SelectDestination(hit.point);
                     else
                         Instantiate(warriorSO.GetCharacter(), new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
+                    break;
+                case 13:
+                    if (currentObject != null)
+                        currentObject.SelectDestination(hit.point);
                     break;
                 default:
                     break;
