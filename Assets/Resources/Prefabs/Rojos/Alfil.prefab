@@ -161,6 +161,11 @@ MonoBehaviour:
   visionSensor: {fileID: 465953558817079342}
   damage: 10
   intervalAttack: 1.5
+  isRange: 1
+  easeDOT: 0
+  bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
+  bullets: []
+  id: 0
 --- !u!114 &465953558817079342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +186,8 @@ MonoBehaviour:
   speed: 2
   stopDistance: 12
   rotationSpeed: 5
-  characterType: 2
+  isTower: 0
+  id: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
