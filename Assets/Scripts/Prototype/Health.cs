@@ -28,6 +28,13 @@ public class Health : MonoBehaviour
 
         //Debug.Log("contandos" + Time.time);
         Destroy(gameObject, time);
+        //Desapear(time);
+    }
+    public async void Desapear(float time)
+    {
+        //await times
+
+        gameObject.SetActive(false);
     }
     public void UpdateCharacterUI()
     {

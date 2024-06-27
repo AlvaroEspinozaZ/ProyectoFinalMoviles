@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5328b380325f644cac1c2f052d63421, type: 3}
   m_Name: WarriorAlfilStrategy
   m_EditorClassIdentifier: 
-  prefabBase: {fileID: 85292943021911798, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+  prefabBase: {fileID: 11400000, guid: 1e6060cd52cab8e429f94f8f79993417, type: 2}
   profilePicture: {fileID: 21300000, guid: d7232b9bd02e5254189e42f855242481, type: 3}
   costSpawn: 0
   maxSpawn: 0

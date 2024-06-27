@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820ae42aa983a1949b0efc105cf54623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHealth: 120
+  characterHealth: 200
   HealthBar: {fileID: 7135966593919300511}
 --- !u!114 &1909085234618064280
 MonoBehaviour:
@@ -450,6 +450,11 @@ MonoBehaviour:
   visionSensor: {fileID: 2453357323677701416}
   damage: 10
   intervalAttack: 1.5
+  isRange: 0
+  easeDOT: 0
+  bullet: {fileID: 0}
+  bullets: []
+  id: 0
 --- !u!114 &2453357323677701416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +476,7 @@ MonoBehaviour:
   stopDistance: 1.3
   rotationSpeed: 5
   isTower: 0
+  id: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a0d8384e31149c418278d63f8c98033, type: 3}
-  m_Name: ArmyPeon
+  m_Name: ArmyAlfil
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8188779346697298606, guid: b47ab861b98beb342b20b925c586c12c, type: 3}
-  cant: 30
-  id: 9
+  prefab: {fileID: 85292943021911798, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+  cant: 20
+  id: 0
   listHide: []
   listArmy: []

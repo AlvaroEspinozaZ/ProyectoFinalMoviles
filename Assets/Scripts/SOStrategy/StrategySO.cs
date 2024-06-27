@@ -4,14 +4,18 @@ using UnityEngine;
 
 public abstract class StrategySO : ScriptableObject
 {
-    [SerializeField] protected GameObject prefabBase;
+    [SerializeField] protected SpamArmy prefabBase;
     [SerializeField] protected Sprite profilePicture;
     [SerializeField] protected int costSpawn;
     [SerializeField] protected int maxSpawn;
     [SerializeField] protected float rechargeTime;
+    public virtual void Instantiate(Vector3 tmpinit)
+    {
+        prefabBase.Instatiate(tmpinit);
+    }
     public virtual GameObject GetCharacter()
     { 
-        return prefabBase;
+        return prefabBase.prefab;
     }
     public virtual Sprite GetProfilePicture()
     {

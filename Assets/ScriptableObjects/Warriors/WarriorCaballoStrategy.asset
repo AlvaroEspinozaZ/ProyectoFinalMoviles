@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220e290db9749f04aaba65916210be7d, type: 3}
   m_Name: WarriorCaballoStrategy
   m_EditorClassIdentifier: 
-  prefabBase: {fileID: 0}
+  prefabBase: {fileID: 11400000, guid: b98858a18a7aaf842bfae41301971e6f, type: 2}
   profilePicture: {fileID: 21300000, guid: 761d42d253cabea408deccfd02008393, type: 3}
   costSpawn: 0
   maxSpawn: 0

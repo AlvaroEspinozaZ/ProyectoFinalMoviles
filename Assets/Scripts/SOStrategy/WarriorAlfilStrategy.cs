@@ -19,4 +19,8 @@ public class WarriorAlfilStrategy : StrategySO
     {
         return base.GetRechargeTime();
     }
+    public override void Instantiate(Vector3 tmpinit)
+    {
+        base.Instantiate(tmpinit);
+    }
 }

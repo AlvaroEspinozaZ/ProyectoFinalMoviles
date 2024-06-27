@@ -139,7 +139,8 @@ public class Test : MonoBehaviour
                     if (currentObject != null)
                         currentObject.SelectDestination(hit.point);
                     else
-                        Instantiate(warriorSO.GetCharacter(), new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
+                        //Instantiate(warriorSO.GetCharacter(), new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
+                        warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
                     break;
                 case 13:
                     if (currentObject != null)

@@ -34,6 +34,7 @@ public class SpamArmy : ScriptableObject
         }
         id++;
     }
+
     public void MoveArmy(Vector3 posToMove,int id)
     {
             for (int i = 0; i < listArmy.Count; i++)

@@ -152,7 +152,7 @@ public class PrefabMovement : MonoBehaviour
                 bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, intervalAttack).SetEase(Ease.InOutCubic);
                 id = (id + 1) % 5;
                 timeToLastHit = Time.time;
-                Debug.Log("Jaja");
+                //Debug.Log("Jaja");
 
             }
         }

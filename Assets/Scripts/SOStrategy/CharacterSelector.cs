@@ -13,7 +13,7 @@ public class CharacterSelector : MonoBehaviour
     public bool isGame = false;
     public CharacterInfoSO characterInfo;
     public Test ControllerInput;
-    private int count = 0;
+    public int count = 0;
     private void Start()
     {
         if (!isGame) return;

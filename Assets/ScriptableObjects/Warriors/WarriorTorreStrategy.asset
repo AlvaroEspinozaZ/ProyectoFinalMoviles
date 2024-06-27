@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce071e6b0811ec40a8312e9742fac73, type: 3}
   m_Name: WarriorTorreStrategy
   m_EditorClassIdentifier: 
-  prefabBase: {fileID: 3856224903289508559, guid: 5bc61ed55319dee479b3c408dbdaf2c6, type: 3}
+  prefabBase: {fileID: 11400000, guid: eccffcb5a9aec204b8ccce019a11bb43, type: 2}
   profilePicture: {fileID: 21300000, guid: cf27b718fd68e9a48acebb468fd067e6, type: 3}
   costSpawn: 0
   maxSpawn: 0
