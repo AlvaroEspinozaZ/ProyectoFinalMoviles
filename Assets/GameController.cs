@@ -11,15 +11,8 @@ public class GameController : MonoBehaviour
     public Vector2 touchPos;
     float directionX;
     float directionY;
-    bool touchStarted;
 
     public float timer;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         WithTouch();
@@ -33,12 +26,9 @@ public class GameController : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 initPos = touch.position;
-                touchStarted = true;
             }
             else if ( touch.phase == TouchPhase.Moved)
             {
-                //directionX = touch.position.x - initPos.x;
-                //directionY = touch.position.y - initPos.y;
                 touchPos = touch.position;
                 worldInitPos = Camera.main.ScreenToWorldPoint(new Vector3(initPos.x, initPos.y, Camera.main.nearClipPlane));
                 worldTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, Camera.main.nearClipPlane));
@@ -51,11 +41,6 @@ public class GameController : MonoBehaviour
                     GameObject tmp = Instantiate(prefab, spawnPos, Quaternion.identity);
                     timer = 0;
                 }
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                
-                touchStarted = false;
             }
         }
     }

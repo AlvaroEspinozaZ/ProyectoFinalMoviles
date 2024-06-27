@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce071e6b0811ec40a8312e9742fac73, type: 3}
+  m_Name: WarriorTorreStrategy
+  m_EditorClassIdentifier: 
+  prefabBase: {fileID: 3856224903289508559, guid: 5bc61ed55319dee479b3c408dbdaf2c6, type: 3}
+  profilePicture: {fileID: 21300000, guid: cf27b718fd68e9a48acebb468fd067e6, type: 3}
+  costSpawn: 0
+  maxSpawn: 0
+  rechargeTime: 0

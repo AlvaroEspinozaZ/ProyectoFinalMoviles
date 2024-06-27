@@ -16,7 +16,7 @@ public class Test : MonoBehaviour
     InputAction.CallbackContext currentContext;
 
     [SerializeField] private VisionSensorPrimitive currentObject;
-    [SerializeField] private GameObject prefabAllied;
+    [SerializeField] private StrategySO warriorSO;
     private float maxTimeDT = 0.2f;
     private float minTimePress = 0.15f;
     private float swipeLoopTime = 0.12f;
@@ -30,7 +30,6 @@ public class Test : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] Camera mainCamera;
-    [SerializeField] float velocityMainCamera = 0.3f;
     Vector2 positionCamera;
     Vector2 currentpositionCamera;
     [SerializeField] Ease easeDOT;
@@ -133,14 +132,15 @@ public class Test : MonoBehaviour
             int layerInt = hit.transform.gameObject.layer;
             switch (layerInt)
             {
-                case 3: //Floor
+
+                case 6: //Player
+                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                    break;
+                case 12: //Floor
                     if (currentObject != null)
                         currentObject.SelectDestination(hit.point);
                     else
-                        Instantiate(prefabAllied, new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
-                    break;
-                case 6: //Player
-                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                        Instantiate(warriorSO.GetCharacter(), new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
                     break;
                 default:
                     break;
@@ -204,4 +204,8 @@ public class Test : MonoBehaviour
         await mainCamera.transform.DORotate(tmp, time).SetEase(easeDOT).AsyncWaitForCompletion();
     }
     //Buttons
+    public void SetWarriorPrefab(StrategySO current)
+    {
+        warriorSO = current;
+    }
 }

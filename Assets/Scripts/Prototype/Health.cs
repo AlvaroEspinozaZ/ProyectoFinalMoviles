@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
         List<Task> currentTask = new();
         currentTask.Add(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
         currentTask.Add(transform.DOMove(tmp, time).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
-      
+
         //Debug.Log("contandos" + Time.time);
         Destroy(gameObject, time);
     }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edeb6cd34d3e67142a926dc2579f21c0, type: 3}
+  m_Name: WarriorReinaStrategy
+  m_EditorClassIdentifier: 
+  prefabBase: {fileID: 7268779247441332405, guid: 3d6d64ab690385b4bb1332b3df3177be, type: 3}
+  profilePicture: {fileID: 21300000, guid: 2f8c822476bb16f4498594fb4ddcbefc, type: 3}
+  costSpawn: 0
+  maxSpawn: 0
+  rechargeTime: 0

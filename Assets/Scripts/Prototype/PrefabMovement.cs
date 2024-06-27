@@ -4,7 +4,7 @@ public class PrefabMovement : MonoBehaviour
 {
     public Animator animator; 
     public VisionSensorPrimitive visionSensor;
-    public int  damage=10;
+    public int damage = 10;
     private Health myHealth;
     Rigidbody _rgb;
     private float timeToLastHit;
@@ -84,7 +84,7 @@ public class PrefabMovement : MonoBehaviour
             
         }
     }
-    void Attack(float timeToAttack, Health enemy)
+    async void Attack(float timeToAttack, Health enemy)
     {
         if (enemy.GetComponent<VisionSensorPrimitive>()!= null)
         {
@@ -105,7 +105,7 @@ public class PrefabMovement : MonoBehaviour
             {
                 if (enemy.gameObject != null)
                 {
-                    enemy.Died(1.1f);
+                   enemy.Died(1.1f);
                 }
             }
             timeToLastHit = Time.time;            
