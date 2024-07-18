@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 7164345975257070681}
   - component: {fileID: 3745380541037861985}
   - component: {fileID: 6142230765267437600}
-  - component: {fileID: 2195506701312893269}
   - component: {fileID: 72736678911843487}
+  - component: {fileID: 1948433649176564273}
   m_Layer: 8
   m_Name: TowerWhite
   m_TagString: Untagged
@@ -178,31 +178,12 @@ MonoBehaviour:
   rotationSpeed: 0
   isTower: 1
   id: 0
+  _selection: {fileID: 0}
+  _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
   isCurrentMove: 0
---- !u!114 &2195506701312893269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7949415411313337412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cb574f7848b15479f1cda4ebec9841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  visionSensor: {fileID: 6142230765267437600}
-  damage: 0
-  intervalAttack: 0
-  isRange: 1
-  easeDOT: 0
-  bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
-  bullets: []
-  id: 0
 --- !u!54 &72736678911843487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -230,6 +211,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1948433649176564273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949415411313337412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7cfe3b616080f4caa9e5f0b350276c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  intervalAttack: 0
+  easeDOT: 0
+  bullet: {fileID: 0}
+  bullets: []
 --- !u!1001 &7826692986332393872
 PrefabInstance:
   m_ObjectHideFlags: 0

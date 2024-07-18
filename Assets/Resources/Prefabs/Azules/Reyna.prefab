@@ -504,8 +504,8 @@ GameObject:
   - component: {fileID: 648250485786252526}
   - component: {fileID: 2312347013597112540}
   - component: {fileID: 8541253051915841214}
-  - component: {fileID: 2954139404798150952}
   - component: {fileID: 4342115706943098322}
+  - component: {fileID: 6884320000139418138}
   m_Layer: 7
   m_Name: Reyna
   m_TagString: Untagged
@@ -635,22 +635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 120
   HealthBar: {fileID: 1980081059246477365}
---- !u!114 &2954139404798150952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268779247441332405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cb574f7848b15479f1cda4ebec9841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6676614654112911335}
-  visionSensor: {fileID: 4342115706943098322}
-  damage: 10
-  intervalAttack: 1.5
 --- !u!114 &4342115706943098322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,10 +655,31 @@ MonoBehaviour:
   speed: 2
   stopDistance: 1.3
   rotationSpeed: 5
+  isTower: 0
+  id: 0
+  _selection: {fileID: 0}
+  _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
   isCurrentMove: 0
+--- !u!114 &6884320000139418138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268779247441332405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7cfe3b616080f4caa9e5f0b350276c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  intervalAttack: 1.5
+  easeDOT: 0
+  bullet: {fileID: 0}
+  bullets: []
 --- !u!1 &7454234508458604951
 GameObject:
   m_ObjectHideFlags: 0

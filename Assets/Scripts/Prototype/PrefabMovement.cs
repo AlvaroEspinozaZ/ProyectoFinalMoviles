@@ -2,37 +2,23 @@ using UnityEngine;
 using DG.Tweening;
 public class PrefabMovement : MonoBehaviour
 {
-    public Animator animator; 
-    public VisionSensorPrimitive visionSensor;
-    public int  damage=10;
-    private int damageRange => damage;
-    private Health myHealth;
-    Rigidbody _rgb;
-    private float timeToLastHit;
+    protected Animator animator;
+    protected VisionSensorPrimitive visionSensor;
+    public int  damage=10;   
+    protected Health myHealth;
+    protected Rigidbody _rgb;
+    protected float timeToLastHit;
     public float intervalAttack = 1.5f;
-    public bool isRange = false;
-    [Header("RangeAttack")]
-    [SerializeField] Ease easeDOT;
-    [SerializeField] BulletController bullet;
-    [SerializeField] BulletController[] bullets;
-    [SerializeField] int id;
-    private void Start()
+ 
+
+    public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
         myHealth = GetComponent<Health>();
-        bullets = new BulletController[5];
-        if (bullet != null)
-        {
-            for (int i = 0; i < bullets.Length; i++)
-            {
-                bullets[i] = Instantiate(bullet);
-                bullets[i].gameObject.SetActive(false);
-            }
-        }
-      
-
+        visionSensor = GetComponent<VisionSensorPrimitive>();
+        animator = GetComponent<Animator>();
     }
-    private void Update()
+    public virtual void Update()
     {
         if (myHealth.characterHealth <= 0)
         {
@@ -47,7 +33,7 @@ public class PrefabMovement : MonoBehaviour
         }
     }
 
-    private void HandleMovementAndAttack()
+    public virtual void HandleMovementAndAttack()
     {
         if (visionSensor.isObjectDetected)
         {
@@ -101,11 +87,9 @@ public class PrefabMovement : MonoBehaviour
             
         }
     }
-    void Attack(float timeToAttack, Health enemy)
-    {
-        id = 0;
-        if (!isRange)
-        {
+    public virtual void Attack(float timeToAttack, Health enemy)
+    {       
+      
             if (enemy.GetComponent<VisionSensorPrimitive>() != null)
             {
                 VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
@@ -115,48 +99,22 @@ public class PrefabMovement : MonoBehaviour
                     tmp.currentEnemy = myHealth;
                     tmp.isObjectDetected = true;
                 }
-            }
-
-            if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack)
-            {
-                enemy.characterHealth -= damage;
-                enemy.UpdateCharacterUI();
-                if (enemy.characterHealth <= 0)
+                if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp != null)
                 {
-                    if (enemy.gameObject != null)
+                    enemy.characterHealth -= damage;
+                    enemy.UpdateCharacterUI();
+                    if (enemy.characterHealth <= 0)
                     {
-                        enemy.Died(1.1f);
+                        if (enemy.gameObject != null)
+                        {
+                            enemy.Died(1.1f);
+                        }
                     }
-                }
-                timeToLastHit = Time.time;
-            }
-        }
-        else
-        {
-            
-            if (enemy.GetComponent<VisionSensorPrimitive>() != null)
-            {
-                VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
-                if (tmp.currentEnemy == null)
-                {
-                    tmp.objectCollision = gameObject;
-                    tmp.currentEnemy = myHealth;
-                    tmp.isObjectDetected = true;
+                    timeToLastHit = Time.time;
                 }
             }
-            if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack)
-            {
-                bullets[id].transform.position = transform.position;
-                bullets[id].gameObject.SetActive(true);
-                bullets[id].SetEnemy(enemy, damageRange);
-                bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, intervalAttack).SetEase(Ease.InOutCubic);
-                id = (id + 1) % 5;
-                timeToLastHit = Time.time;
-                //Debug.Log("Jaja");
 
-            }
-        }
-            
+ 
     }
 
 }

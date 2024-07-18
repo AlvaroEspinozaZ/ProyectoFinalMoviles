@@ -11,10 +11,10 @@ TagManager:
   - Floor
   - Water
   - UI
-  - White
-  - Black
-  - StructureWhite
-  - StructureBlack
+  - Red
+  - Blue
+  - StructureRed
+  - StructureBlue
   - Sensor
   - BlueTeam
   - RedTeam

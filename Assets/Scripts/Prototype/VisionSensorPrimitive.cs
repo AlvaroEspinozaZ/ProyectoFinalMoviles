@@ -16,8 +16,8 @@ public class VisionSensorPrimitive : MonoBehaviour
     public bool _isSelection=false;
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
-
     public Health currentEnemy;
+    public Health[] currentAlied;
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
     Vector3 destination;
@@ -66,7 +66,15 @@ public class VisionSensorPrimitive : MonoBehaviour
         if (!isObjectDetected && ((1 << other.gameObject.layer) & detectableLayers) != 0)
         {
             objectCollision = other.gameObject;
-            currentEnemy = objectCollision.GetComponent<Health>();
+            if (objectCollision.layer!= gameObject.layer)
+            {
+                currentEnemy = objectCollision.GetComponent<Health>();
+            }
+            else
+            {
+                //currentAlied[0] = objectCollision.GetComponent<Health>();
+            }
+            
             isObjectDetected = true;
             if (currentEnemy.isDeath)
             {

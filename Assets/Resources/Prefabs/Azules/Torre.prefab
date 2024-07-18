@@ -303,8 +303,8 @@ GameObject:
   - component: {fileID: 6386832163776146188}
   - component: {fileID: 6802267470397940057}
   - component: {fileID: 4331675440619146648}
-  - component: {fileID: 1909085234618064280}
   - component: {fileID: 2453357323677701416}
+  - component: {fileID: 3262875340725185027}
   m_Layer: 7
   m_Name: Torre
   m_TagString: Untagged
@@ -434,22 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 120
   HealthBar: {fileID: 3333257623915248506}
---- !u!114 &1909085234618064280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3856224903289508559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cb574f7848b15479f1cda4ebec9841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1984651956222992292}
-  visionSensor: {fileID: 2453357323677701416}
-  damage: 10
-  intervalAttack: 1.5
 --- !u!114 &2453357323677701416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,10 +454,28 @@ MonoBehaviour:
   speed: 2
   stopDistance: 1.3
   rotationSpeed: 5
+  isTower: 0
+  id: 0
+  _selection: {fileID: 0}
+  _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
   isCurrentMove: 0
+--- !u!114 &3262875340725185027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856224903289508559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1209be3297707be4ebc521a006389721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  intervalAttack: 1.5
 --- !u!1 &4317746435231618660
 GameObject:
   m_ObjectHideFlags: 0

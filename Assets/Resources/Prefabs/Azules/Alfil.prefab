@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3989147484189354995}
   - component: {fileID: 6780306123105367761}
   - component: {fileID: 393106322728688432}
-  - component: {fileID: 4058420995736907457}
   - component: {fileID: 465953558817079342}
+  - component: {fileID: 3034426279363188128}
   m_Layer: 7
   m_Name: Alfil
   m_TagString: Untagged
@@ -145,27 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 120
   HealthBar: {fileID: 3147155507463570561}
---- !u!114 &4058420995736907457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85292943021911798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cb574f7848b15479f1cda4ebec9841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3895049126728608290}
-  visionSensor: {fileID: 465953558817079342}
-  damage: 10
-  intervalAttack: 1.5
-  isRange: 1
-  easeDOT: 0
-  bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
-  bullets: []
-  id: 0
 --- !u!114 &465953558817079342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,10 +167,29 @@ MonoBehaviour:
   rotationSpeed: 5
   isTower: 0
   id: 0
+  _selection: {fileID: 0}
+  _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
   isCurrentMove: 0
+--- !u!114 &3034426279363188128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85292943021911798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7cfe3b616080f4caa9e5f0b350276c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  intervalAttack: 1.5
+  easeDOT: 0
+  bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
+  bullets: []
 --- !u!1 &106206491072773912
 GameObject:
   m_ObjectHideFlags: 0

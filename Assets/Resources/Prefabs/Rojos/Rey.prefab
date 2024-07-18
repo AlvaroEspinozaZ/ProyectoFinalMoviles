@@ -600,8 +600,8 @@ GameObject:
   - component: {fileID: 1687593857550299279}
   - component: {fileID: 4657457635695029212}
   - component: {fileID: 6333652175008996259}
-  - component: {fileID: 4815481203511382953}
   - component: {fileID: 7492417947100471986}
+  - component: {fileID: 6368637892290898342}
   m_Layer: 6
   m_Name: Rey
   m_TagString: Untagged
@@ -731,27 +731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 160
   HealthBar: {fileID: 2497848288379074618}
---- !u!114 &4815481203511382953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550108731142129760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cb574f7848b15479f1cda4ebec9841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6500515095679439207}
-  visionSensor: {fileID: 7492417947100471986}
-  damage: 10
-  intervalAttack: 1.5
-  isRange: 0
-  easeDOT: 0
-  bullet: {fileID: 0}
-  bullets: []
-  id: 0
 --- !u!114 &7492417947100471986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,10 +753,26 @@ MonoBehaviour:
   rotationSpeed: 5
   isTower: 0
   id: 0
+  _selection: {fileID: 0}
+  _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
   isObjectDetected: 0
   isCurrentMove: 0
+--- !u!114 &6368637892290898342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550108731142129760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1209be3297707be4ebc521a006389721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  intervalAttack: 1.5
 --- !u!1 &7295904032950652796
 GameObject:
   m_ObjectHideFlags: 0
