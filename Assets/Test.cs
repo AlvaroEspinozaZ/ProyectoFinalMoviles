@@ -65,10 +65,9 @@ public class Test : MonoBehaviour
             swipeTimer = 0f;
             float distance = Vector2.Distance(positionCamera, currentpositionCamera);
            
-
             if (distance >= swipeMinDistance)
             {
-                MySwipe();
+                //MySwipe();
             }
             startPosition = currentPosition;
         }
@@ -121,7 +120,7 @@ public class Test : MonoBehaviour
         currentpositionCamera = mainCamera.ViewportToScreenPoint( centeredPosition/1000000);
     }
 
-    //Inputs
+
     private void MyTap()
     {
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);
@@ -132,19 +131,19 @@ public class Test : MonoBehaviour
             int layerInt = hit.transform.gameObject.layer;
             switch (layerInt)
             {
-                case 6: //Player
+                case 5: 
+                    
+                    break;
+                case 6: 
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                    Debug.Log("NPCRojo");
                     break;
                 case 12: //Floor
                     if (currentObject != null)
-                        currentObject.SelectDestination(hit.point);
+                        warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
                     else
                         //Instantiate(warriorSO.GetCharacter(), new Vector3(hit.point.x,hit.point.y + 2, hit.point.z), Quaternion.identity);
                         warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
-                    break;
-                case 13:
-                    if (currentObject != null)
-                        currentObject.SelectDestination(hit.point);
                     break;
                 default:
                     break;

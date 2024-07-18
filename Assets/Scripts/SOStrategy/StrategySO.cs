@@ -13,9 +13,9 @@ public abstract class StrategySO : ScriptableObject
     {
         prefabBase.Instatiate(tmpinit);
     }
-    public virtual GameObject GetCharacter()
+    public virtual SpamArmy GetCharacter()
     { 
-        return prefabBase.prefab;
+        return prefabBase;
     }
     public virtual Sprite GetProfilePicture()
     {

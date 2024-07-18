@@ -13,6 +13,8 @@ public class SpamArmy : ScriptableObject
     public List<VisionSensorPrimitive> listArmy;
     float right = 0;
     float left = 0;
+
+
     public void Instatiate(Vector3 tmpinit)
     {
         listHide = new GameObject[cant];
@@ -45,5 +47,15 @@ public class SpamArmy : ScriptableObject
 
                 }
         }        
+    }
+
+    private void OnDisable()
+    {
+        id = 0;
+        listArmy.Clear();
+        if (listHide != null)
+        {
+            listHide = null;
+        }
     }
 }

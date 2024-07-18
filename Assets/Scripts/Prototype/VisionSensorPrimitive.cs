@@ -11,6 +11,9 @@ public class VisionSensorPrimitive : MonoBehaviour
     public float rotationSpeed = 5.0f;
     public bool isTower = false;
     public int id;
+    [Header("Personaje Seleccionado")]
+    public GameObject _selection;
+    public bool _isSelection=false;
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
 
@@ -40,8 +43,24 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             MoveTowardsObject();
         }
+        FeedBackSelectionCharacter();
     }
-
+    public void FeedBackSelectionCharacter()
+    {
+        if (_selection!=null){
+            if (_isSelection == true)
+            {
+                _selection.SetActive(false);
+                //_isSelection = false;
+            }
+            else
+            {
+                _selection.SetActive(true);
+                //_isSelection = true;
+            }
+        }
+   
+    }
     void OnTriggerEnter(Collider other)
     {
         if (!isObjectDetected && ((1 << other.gameObject.layer) & detectableLayers) != 0)
@@ -120,8 +139,8 @@ public class VisionSensorPrimitive : MonoBehaviour
 
     public void SelectDestination(Vector3 position)
     {
-        destination = position;
-        isCurrentMove = true;
+            destination = position;
+            isCurrentMove = true;
     }
 }
 

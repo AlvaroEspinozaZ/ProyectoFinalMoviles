@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WarriorAlfilStrategy", menuName = "Scriptable Objects/WarriorStrategy/WarriorAlfilStrategy", order = 1)]
 public class WarriorAlfilStrategy : StrategySO
 {
-    public override GameObject GetCharacter()
+    public override SpamArmy GetCharacter()
     {
         return base.GetCharacter();
     }
