@@ -129,7 +129,7 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, destination);
 
-            if (distance > 0.2f)
+            if (distance > 0.5f)
             {
                 Vector3 movement = direction * speed * Time.deltaTime;
                 transform.position += movement;

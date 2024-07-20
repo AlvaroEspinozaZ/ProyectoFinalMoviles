@@ -57,7 +57,6 @@ public class Test : MonoBehaviour
             isPress = false;
         }
 
-
         if (isPress)
         {
             swipeTimer += Time.deltaTime;
@@ -75,7 +74,11 @@ public class Test : MonoBehaviour
         }
 
     }
-
+    private void FixedUpdate()
+    {
+        if (isTapped)
+            MyTap();
+    }
     public void OnTouch(InputAction.CallbackContext context)
     {        
         switch (context.phase)
@@ -88,37 +91,31 @@ public class Test : MonoBehaviour
                 Debug.Log("Disabled");
                 break;
             case InputActionPhase.Started:
-                Debug.Log("Started");
-                allowIncrease = true;
-                isDoubleTap = true;
+                //Debug.Log("Started");              
                 
-                // Detectar doble tap
                 if (Time.time - lastTapTime < doubleTapTime)
                 {
                     MyDoubleTap();
+                    isTapped = false;
+                    totalTime = maxTimeDT;
                 }
                 else
-                {
-                    
+                {                    
                     if (totalTime >= minTimePress)
                     {
                         isPress = true;
                         totalTime = minTimePress;
                         MyPress();
                     }
-                    else
-                    {
-                        MyTap();
-                        Debug.Log("Tap");
-                    }
                 }
-                lastTapTime = Time.time;
-                posfinal = mainCamera.transform.position;
+                lastTapTime = Time.time;                
                 positionCamera = currentpositionCamera;
                 startPosition = currentPosition;
                 break;
             case InputActionPhase.Performed:
-                
+                allowIncrease = true;
+                isDoubleTap = true;
+                posfinal = mainCamera.transform.position;
                 Debug.Log("Performed");
                 break;
             case InputActionPhase.Canceled:
@@ -143,13 +140,11 @@ public class Test : MonoBehaviour
     private void MyTap()
     {
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);
-        RaycastHit hit;
-        Debug.Log("JAJAJATap");
+        RaycastHit hit;     
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, touchableLayers))
         {
            
             int layerInt = hit.transform.gameObject.layer;
-            Debug.Log("Se presiono el layer: "+ layerInt);
             flag.SetActive(false);
 
             switch (layerInt)
@@ -159,23 +154,18 @@ public class Test : MonoBehaviour
                     break;
                 case 6:
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
-                    if (currentObject.id != hit.transform.gameObject.GetComponent<VisionSensorPrimitive>().id)
-                    {
+                    warriorSO.GetCharacter().ActiveSelectionArmy(currentObject._selection, currentObject.id);     
+                    if (currentObject._selection)
                         isMovingArmy = true;
-                    }
                     else isMovingArmy = false;
 
-                    Debug.Log("NPCRojo");
                     break;
-                case 12: // Floor
-                    //Debug.Log("Toco el suelo");
+                case 12: // Floor            
                     if (!canCreated)
                     {
                         if (currentObject != null)
-                        {
-                            Debug.Log("Podemos Mover Army");
-                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
-                            Debug.Log("Moveiendo a Army: " + hit.point);
+                        {                            
+                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);                            
                             if (isMovingArmy)
                             {
                                 flag.transform.position = hit.point;
@@ -186,6 +176,7 @@ public class Test : MonoBehaviour
                     else
                     {
                         Debug.Log("Podemos Crear Army");
+                        Debug.Log(canCreated);
                         warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
                         flag.SetActive(false);
                         canCreated = false;

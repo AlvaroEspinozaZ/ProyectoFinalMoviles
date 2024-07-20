@@ -48,7 +48,32 @@ public class SpamArmy : ScriptableObject
                 }
         }        
     }
+    public void ActiveSelectionArmy(bool selection, int id)
+    {
+        if (selection)
+        {
+            for (int i = 0; i < listArmy.Count; i++)
+            {
+                if (listArmy[i].id == id)
+                {
+                    listArmy[i]._isSelection = false; ;
 
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < listArmy.Count; i++)
+            {
+                if (listArmy[i].id == id)
+                {
+                    listArmy[i]._isSelection = true;
+
+                }
+            }
+        }
+   
+    }
     private void OnDisable()
     {
         id = 0;
