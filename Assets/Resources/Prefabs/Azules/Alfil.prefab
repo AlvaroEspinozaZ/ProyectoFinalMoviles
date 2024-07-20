@@ -171,6 +171,7 @@ MonoBehaviour:
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
+  currentAlied: []
   isObjectDetected: 0
   isCurrentMove: 0
 --- !u!114 &3034426279363188128
@@ -187,6 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   intervalAttack: 1.5
+  timeToDeath: 1.1
+  eventAttack: {fileID: 11400000, guid: 18ee5d02056d4c84bbcd2382f82689f4, type: 2}
   easeDOT: 0
   bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
   bullets: []

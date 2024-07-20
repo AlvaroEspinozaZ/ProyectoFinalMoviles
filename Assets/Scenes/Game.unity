@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -413,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -562,6 +570,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -838,6 +850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alfil (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.741065
@@ -935,6 +951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peon (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -951,6 +971,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,6 +1032,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1240,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefenseTowerBlack
       objectReference: {fileID: 0}
+    - target: {fileID: 8426940230964281810, guid: 9e714d564c9a85b49b73b0a302f9b051, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1287,6 +1319,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1518,6 +1554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peon
       objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1574,6 +1614,10 @@ PrefabInstance:
     - target: {fileID: 7949415411313337412, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_Name
       value: TowerWhite (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949415411313337412, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1819,6 +1863,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2082,6 +2130,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2383,6 +2435,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559501331}
   m_CullTransparentMesh: 1
+--- !u!1001 &590181930
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.733345
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.317256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399033540650447872, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_Name
+      value: Peon (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
 --- !u!1 &612475701
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2617,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612475701}
   m_CullTransparentMesh: 1
+--- !u!1001 &618765947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1399921284968766500, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_Name
+      value: DefenseTowerWhite (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399921284968766500, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
 --- !u!1001 &625323936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2515,6 +2689,10 @@ PrefabInstance:
     - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_Name
       value: Alfil (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2612,6 +2790,10 @@ PrefabInstance:
     - target: {fileID: 8426940230964281810, guid: 9e714d564c9a85b49b73b0a302f9b051, type: 3}
       propertyPath: m_Name
       value: DefenseTowerBlack (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426940230964281810, guid: 9e714d564c9a85b49b73b0a302f9b051, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2885,6 +3067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alfil
       objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.227608
@@ -3031,6 +3217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torre (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.730654
@@ -3128,6 +3318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefenseTowerBlack (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8426940230964281810, guid: 9e714d564c9a85b49b73b0a302f9b051, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3141,13 +3335,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3001052533283220449, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001052533283220449, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001052533283220449, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5577474380644293037, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5577474380644293037, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000019073486
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5577474380644293037, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3184,6 +3390,10 @@ PrefabInstance:
     - target: {fileID: 7949415411313337412, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_Name
       value: TowerWhite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949415411313337412, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3336,6 +3546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefenseTowerWhite (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1399921284968766500, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.890534
@@ -3393,6 +3607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torre (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.6306543
@@ -3449,6 +3667,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3641,6 +3863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefenseTowerWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 1399921284968766500, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7846331885320705314, guid: f4c2cfdaeb842264f903a306b61c35f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.95969
@@ -3832,6 +4058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alfil (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.867947
@@ -3877,6 +4107,128 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+--- !u!1001 &1264493831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_Name
+      value: Alfil (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.861866
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.6775
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e00d1f7ea68ebd408009da16838da7c, type: 3}
+--- !u!1001 &1269309690
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 85292943021911798, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_Name
+      value: Alfil (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 85292943021911798, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.39205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599385701584217818, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
 --- !u!1 &1290514784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,6 +4466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torre (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.6
@@ -4247,6 +4603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torre (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.6306543
@@ -4303,6 +4663,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4535,6 +4899,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rey (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6550108731142129760, guid: 354e437c3ef497246ba442c0870a50a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4551,6 +4919,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4877,6 +5249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneController
       objectReference: {fileID: 0}
+    - target: {fileID: 1054815111750939315, guid: 514629fd844b77344acef16721fdc84b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1465828433466571559, guid: 514629fd844b77344acef16721fdc84b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4984,6 +5360,10 @@ PrefabInstance:
     - target: {fileID: 6550108731142129760, guid: 354e437c3ef497246ba442c0870a50a3, type: 3}
       propertyPath: m_Name
       value: Rey (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550108731142129760, guid: 354e437c3ef497246ba442c0870a50a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5150,6 +5530,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5550,6 +5934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100010, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5642,6 +6030,10 @@ PrefabInstance:
     - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
       propertyPath: m_Name
       value: Peon (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6186,6 +6578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rey
       objectReference: {fileID: 0}
+    - target: {fileID: 6550108731142129760, guid: 354e437c3ef497246ba442c0870a50a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6395,6 +6791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reyna
       objectReference: {fileID: 0}
+    - target: {fileID: 7268779247441332405, guid: 10b8b15f0d9dde743b0a8c2eefe28538, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6411,6 +6811,10 @@ PrefabInstance:
     - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_Name
       value: Torre (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856224903289508559, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9086901798469047133, guid: d037dbdff3666f349af87c60e25c6674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6947,3 +7351,7 @@ SceneRoots:
   - {fileID: 51171529}
   - {fileID: 146290873}
   - {fileID: 1755824327}
+  - {fileID: 618765947}
+  - {fileID: 1264493831}
+  - {fileID: 590181930}
+  - {fileID: 1269309690}

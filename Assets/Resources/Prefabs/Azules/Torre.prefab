@@ -434,6 +434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 120
   HealthBar: {fileID: 3333257623915248506}
+  eventTakeDamage: {fileID: 11400000, guid: 9c77b2266e2a00e4cb7192d75e236bb2, type: 2}
+  eventDead: {fileID: 11400000, guid: 38677de1ab6858547a3620d94f9917c2, type: 2}
 --- !u!114 &2453357323677701416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +462,7 @@ MonoBehaviour:
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
+  currentAlied: []
   isObjectDetected: 0
   isCurrentMove: 0
 --- !u!114 &3262875340725185027
@@ -476,6 +479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   intervalAttack: 1.5
+  timeToDeath: 1.1
+  eventAttack: {fileID: 11400000, guid: ae9974478c8fe2d40bd2fe302ddb04d4, type: 2}
 --- !u!1 &4317746435231618660
 GameObject:
   m_ObjectHideFlags: 0

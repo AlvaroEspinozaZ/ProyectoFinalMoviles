@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private Health enemy;
     [SerializeField] private int damage;
-
+    public float timeToDeath = 1.1f;
     private void OnEnable()
     {
         StartCoroutine(Descativas());
@@ -22,14 +22,14 @@ public class BulletController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Health>() == enemy)
             {
-
-                enemy.characterHealth -= damage;
-                enemy.UpdateCharacterUI();
-                if (enemy.characterHealth <= 0)
+                //Llamar evento de RecivirDaño
+                enemy.eventTakeDamage?.Invoke(damage);
+                enemy.eventTakeDamageUI?.Invoke();
+                if (enemy.isDeath)
                 {
                     if (enemy.gameObject != null)
                     {
-                        enemy.Died(1.1f);
+                        enemy.eventDead?.Invoke(timeToDeath);
                     }
                 }
                 gameObject.SetActive(false);

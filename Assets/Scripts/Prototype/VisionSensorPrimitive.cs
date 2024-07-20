@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class VisionSensorPrimitive : MonoBehaviour
 {
     [Header("Opciones")]
@@ -21,7 +21,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
     Vector3 destination;
-
+    public Action<float, VisionSensorPrimitive,Health> counterAttack;
     private void Start()
     {
         if(visionCollider!=null)
@@ -44,6 +44,12 @@ public class VisionSensorPrimitive : MonoBehaviour
             MoveTowardsObject();
         }
         FeedBackSelectionCharacter();
+        if (objectCollision == gameObject)
+        {
+            objectCollision = null;
+            currentEnemy = null;
+            isObjectDetected = false;
+        }
     }
     public void FeedBackSelectionCharacter()
     {
@@ -147,8 +153,38 @@ public class VisionSensorPrimitive : MonoBehaviour
 
     public void SelectDestination(Vector3 position)
     {
-            destination = position;
-            isCurrentMove = true;
+        
+        destination = position;
+        isCurrentMove = true;
+    }
+
+    void CounterAttack(float distance, VisionSensorPrimitive tmp,Health myHealth)
+    {
+        if(tmp.currentEnemy!= myHealth)
+        {
+            float distance1 = Vector3.Distance(transform.position, tmp.currentEnemy.gameObject.transform.position);
+            float distance2 = Vector3.Distance(transform.position, tmp.gameObject.transform.position);
+            if (distance1 < distance2)
+            {                
+                Debug.Log("Se mantiene");
+            }
+            else
+            {
+                tmp.objectCollision = gameObject;
+                tmp.currentEnemy = myHealth;
+                tmp.isObjectDetected = true;
+                Debug.Log("Cambiamos");
+            }
+        }
+      
+    }
+    private void OnEnable()
+    {
+        counterAttack += CounterAttack;
+    }
+    private void OnDisable()
+    {
+        counterAttack -= CounterAttack;
     }
 }
 

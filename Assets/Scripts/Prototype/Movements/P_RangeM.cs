@@ -8,6 +8,7 @@ public class P_RangeM : PrefabMovement
     [SerializeField] Ease easeDOT;
     [SerializeField] BulletController bullet;
     [SerializeField] BulletController[] bullets;
+
     int id;
     public override void Start()
     {
@@ -25,13 +26,21 @@ public class P_RangeM : PrefabMovement
 
     public override void Update()
     {
-        base.Update();
+        if (myHealth.characterHealth <= 0)
+        {
+            _rgb.isKinematic = true;
+            if (animator != null)
+                animator.SetBool("IsDead", true);
+
+        }
+        else
+        {
+            HandleMovementAndAttack();
+        }
     }
 
     public override void Attack(float timeToAttack, Health enemy)
     {
-        //base.Attack(timeToAttack, enemy);
-
         if (enemy.GetComponent<VisionSensorPrimitive>() != null)
         {
             VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
@@ -43,13 +52,18 @@ public class P_RangeM : PrefabMovement
             }
             if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp!=null)
             {
-                bullets[id].transform.position = transform.position;
-                bullets[id].gameObject.SetActive(true);
-                bullets[id].SetEnemy(enemy, damage);
-                bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, intervalAttack).SetEase(Ease.InOutCubic);
+                if (bullet != null)
+                {
+                    bullets[id].transform.position = transform.position;
+                    bullets[id].gameObject.SetActive(true);
+                    if (enemy.gameObject != null)
+                    {
+                        bullets[id].SetEnemy(enemy, damage);
+                        bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, intervalAttack).SetEase(Ease.InOutCubic);
+                    }                 
+                }
                 id = (id + 1) % 5;
                 timeToLastHit = Time.time;
-                //Debug.Log("Jaja");
 
             }
         }
@@ -57,6 +71,57 @@ public class P_RangeM : PrefabMovement
     }
     public override void HandleMovementAndAttack()
     {
-        base.HandleMovementAndAttack();
+        //base.HandleMovementAndAttack();
+        if (visionSensor.isObjectDetected)
+        {
+            if (visionSensor.objectCollision != null)
+            {
+                float distance = Vector3.Distance(
+                new Vector3(transform.position.x, 0, transform.position.z),
+                new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
+                if (visionSensor.isTower)
+                {
+                    Attack(intervalAttack, visionSensor.currentEnemy);
+                }
+                else if (distance <= visionSensor.stopDistance)
+                {
+                    if (animator != null)
+                    {
+                        animator.SetBool("IsMove", false);
+                        animator.SetBool("IsAttak", true);
+                    }
+                    Attack(intervalAttack, visionSensor.currentEnemy);
+                }
+                else
+                {
+                    if (animator != null)
+                    {
+                        animator.SetBool("IsMove", true);
+                        animator.SetBool("IsAttak", false);
+                    }
+                }
+            }
+            else visionSensor.isObjectDetected = false;
+
+
+        }
+        else
+        {
+            if (animator != null)
+            {
+                animator.SetBool("IsMove", false);
+                animator.SetBool("IsAttak", false);
+            }
+        }
+
+        if (visionSensor.isCurrentMove)
+        {
+            if (animator != null)
+            {
+                animator.SetBool("IsMove", true);
+                animator.SetBool("IsAttak", false);
+            }
+
+        }
     }
 }

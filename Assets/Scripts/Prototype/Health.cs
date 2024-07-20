@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 public class Health : MonoBehaviour
 {
 
@@ -14,7 +15,9 @@ public class Health : MonoBehaviour
     private CancellationTokenSource cancellationTokenSource;
     [Header("UI Character")]
     public Image HealthBar;
-
+    public Action<int> eventTakeDamage;
+    public Action eventTakeDamageUI;
+    public Action<float> eventDead;
     private void Start()
     {
         maxHealth = characterHealth;
@@ -25,27 +28,46 @@ public class Health : MonoBehaviour
         List<Task> currentTask = new();
         currentTask.Add(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
         currentTask.Add(transform.DOMove(tmp, time).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
-
-        //Debug.Log("contandos" + Time.time);
+        await Task.WhenAll(currentTask);
         Destroy(gameObject, time);
-        //Desapear(time);
     }
     public async void Desapear(float time)
     {
-        //await times
-
+        //await 5 segundos
+        await Task.Delay(5000);
         gameObject.SetActive(false);
     }
-    public void UpdateCharacterUI()
+    public void UpdateCharacterHealthUI()
     {
         if (HealthBar == null) return;
-        HealthBar.fillAmount = (float)characterHealth/ (float)maxHealth;
+        HealthBar.fillAmount = (float)characterHealth / (float)maxHealth;
+        //Debug.Log("Actulizamos a " + gameObject + " y su vida es " + HealthBar.fillAmount);
+    }
+    public void UpdateCharacterHealth(int damage)
+    {
+        characterHealth -= damage;
+        //Debug.Log("Actulizamos a "+ gameObject+" y le quitamos : "+ damage);
     }
     public void CancelDied()
     {
         cancellationTokenSource?.Cancel();
     }
-
+    private void OnEnable()
+    {
+        //Recibir daño
+        eventTakeDamageUI += UpdateCharacterHealthUI;
+        eventTakeDamage += UpdateCharacterHealth;
+        //Al morir
+        eventDead += Died;
+    }
+    private void OnDisable()
+    {
+        //Recibir daño
+        eventTakeDamageUI -= UpdateCharacterHealthUI;
+        eventTakeDamage -= UpdateCharacterHealth;
+        //Al morir
+        eventDead -= Died;
+    }
     private void OnDestroy()
     {
         cancellationTokenSource?.Cancel();

@@ -145,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHealth: 70
   HealthBar: {fileID: 8889464089956424864}
+  eventTakeDamage: {fileID: 11400000, guid: 9c77b2266e2a00e4cb7192d75e236bb2, type: 2}
+  eventDead: {fileID: 11400000, guid: 38677de1ab6858547a3620d94f9917c2, type: 2}
 --- !u!114 &465953558817079342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +173,7 @@ MonoBehaviour:
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
+  currentAlied: []
   isObjectDetected: 0
   isCurrentMove: 0
 --- !u!114 &4804358323674703706
@@ -187,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   intervalAttack: 1.5
+  timeToDeath: 1.1
+  eventAttack: {fileID: 11400000, guid: 18ee5d02056d4c84bbcd2382f82689f4, type: 2}
   easeDOT: 0
   bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
   bullets: []

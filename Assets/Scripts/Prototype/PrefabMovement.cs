@@ -4,12 +4,15 @@ public class PrefabMovement : MonoBehaviour
 {
     protected Animator animator;
     protected VisionSensorPrimitive visionSensor;
-    public int  damage=10;   
+    public int damage = 10;
     protected Health myHealth;
     protected Rigidbody _rgb;
     protected float timeToLastHit;
     public float intervalAttack = 1.5f;
- 
+    public float timeToDeath = 1.1f;
+    public HanldeEvent eventAttack;
+
+
 
     public virtual void Start()
     {
@@ -20,10 +23,10 @@ public class PrefabMovement : MonoBehaviour
     }
     public virtual void Update()
     {
-        if (myHealth.characterHealth <= 0)
+        if (myHealth.isDeath)
         {
             _rgb.isKinematic = true;
-            if(animator!=null)
+            if (animator != null)
                 animator.SetBool("IsDead", true);
 
         }
@@ -44,7 +47,8 @@ public class PrefabMovement : MonoBehaviour
                 new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
                 if (visionSensor.isTower)
                 {
-                    Attack(intervalAttack, visionSensor.currentEnemy);
+                    //Attack(intervalAttack, visionSensor.currentEnemy);
+                    Debug.Log("Te vi");
                 }
                 else if (distance <= visionSensor.stopDistance)
                 {
@@ -57,7 +61,7 @@ public class PrefabMovement : MonoBehaviour
                 }
                 else
                 {
-                    if(animator != null)
+                    if (animator != null)
                     {
                         animator.SetBool("IsMove", true);
                         animator.SetBool("IsAttak", false);
@@ -84,37 +88,56 @@ public class PrefabMovement : MonoBehaviour
                 animator.SetBool("IsMove", true);
                 animator.SetBool("IsAttak", false);
             }
-            
+
         }
     }
     public virtual void Attack(float timeToAttack, Health enemy)
-    {       
-      
-            if (enemy.GetComponent<VisionSensorPrimitive>() != null)
+    {
+        if (enemy.GetComponent<VisionSensorPrimitive>() != null)
+        {
+            VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
+            if (tmp.currentEnemy == null)
             {
-                VisionSensorPrimitive tmp = enemy.GetComponent<VisionSensorPrimitive>();
-                if (tmp.currentEnemy == null)
-                {
-                    tmp.objectCollision = gameObject;
-                    tmp.currentEnemy = myHealth;
-                    tmp.isObjectDetected = true;
-                }
-                if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp != null)
-                {
-                    enemy.characterHealth -= damage;
-                    enemy.UpdateCharacterUI();
-                    if (enemy.characterHealth <= 0)
-                    {
-                        if (enemy.gameObject != null)
-                        {
-                            enemy.Died(1.1f);
-                        }
-                    }
-                    timeToLastHit = Time.time;
-                }
+                tmp.objectCollision = gameObject;
+                tmp.currentEnemy = myHealth;
+                tmp.isObjectDetected = true;  
             }
+            if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
 
- 
+                tmp.counterAttack?.Invoke(distance, tmp, myHealth);
+                //LLamar evento de atacar
+                eventAttack.CallEventGeneral();
+                if (enemy.gameObject != null)
+                {
+                    //Llamar evento de RecivirDaño
+                    enemy.eventTakeDamage?.Invoke(damage);
+                    enemy.eventTakeDamageUI?.Invoke();
+
+                    if (enemy.isDeath)
+                    {
+                        //Llamar evento de Muerte
+                        enemy.eventDead?.Invoke(timeToDeath);
+                        //enemy.Died(timeToDeath);
+                    }
+                }
+                timeToLastHit = Time.time;
+            }
+        }
     }
 
+    private void OnEnable()
+    {
+        //eventAttack.ActionHealth +=;
+      
+}
+    private void OnDisable()
+    {
+        
+    }
+    void UpdateLife(Health enemy)
+    {
+        
+    }
 }
