@@ -12,7 +12,6 @@ public class Test : MonoBehaviour
     [SerializeField] private float totalTime = 0f;
     [SerializeField] private float swipeTimer = 0f;
     [SerializeField] private bool allowIncrease = false;
-    InputAction.CallbackContext currentContext;
     private float maxTimeDT = 0.2f;
     private float minTimePress = 0.15f;
     private float swipeLoopTime = 0.12f;
@@ -22,12 +21,15 @@ public class Test : MonoBehaviour
     bool isDoubleTap = false;
     bool isTapped = true;
     bool isPress = false;
-
+    private float doubleTapTime = 0.3f; 
+    private float lastTapTime = 0f;
     [Header("Strategy")]
     [SerializeField] private VisionSensorPrimitive currentObject;
     [SerializeField] private StrategySO warriorSO;
     [SerializeField] LayerMask touchableLayers;
     [SerializeField] bool canCreated=false;
+    [SerializeField] bool isMovingArmy = false;
+    [SerializeField] GameObject flag ;
     [Header("Camera")]
     [SerializeField] Camera mainCamera;
     Vector2 positionCamera;
@@ -36,6 +38,10 @@ public class Test : MonoBehaviour
     [SerializeField] float delay;
     [SerializeField] Vector3 posfinal;
     [SerializeField] Transform target;
+    private void Start()
+    {
+        flag.SetActive(false);
+    }
     private void Update()
     {
         if (allowIncrease)
@@ -50,25 +56,28 @@ public class Test : MonoBehaviour
             isTapped = true;
             isPress = false;
         }
-  
 
-        if (swipeTimer >= swipeLoopTime)
+
+        if (isPress)
         {
-            swipeTimer = 0f;
-            float distance = Vector2.Distance(positionCamera, currentpositionCamera);
-           
-            if (distance >= swipeMinDistance)
+            swipeTimer += Time.deltaTime;
+            if (swipeTimer >= swipeLoopTime)
             {
-                //MySwipe();
+                swipeTimer = 0f;
+                float distance = Vector2.Distance(positionCamera, currentpositionCamera);
+
+                if (distance >= swipeMinDistance)
+                {
+                    MySwipe();
+                }
+                startPosition = currentPosition;
             }
-            startPosition = currentPosition;
         }
 
     }
 
     public void OnTouch(InputAction.CallbackContext context)
-    {
-        currentContext = context;
+    {        
         switch (context.phase)
         {
             case InputActionPhase.Waiting:
@@ -79,32 +88,38 @@ public class Test : MonoBehaviour
                 Debug.Log("Disabled");
                 break;
             case InputActionPhase.Started:
-                if (isDoubleTap)
+                Debug.Log("Started");
+                allowIncrease = true;
+                isDoubleTap = true;
+                
+                // Detectar doble tap
+                if (Time.time - lastTapTime < doubleTapTime)
                 {
-                    isTapped = false;
                     MyDoubleTap();
-                    totalTime = maxTimeDT;
                 }
                 else
                 {
-                    Debug.Log("Deberia hacer tap");
-                    isTapped = true;
-                    MyTap();
+                    
+                    if (totalTime >= minTimePress)
+                    {
+                        isPress = true;
+                        totalTime = minTimePress;
+                        MyPress();
+                    }
+                    else
+                    {
+                        MyTap();
+                        Debug.Log("Tap");
+                    }
                 }
+                lastTapTime = Time.time;
+                posfinal = mainCamera.transform.position;
                 positionCamera = currentpositionCamera;
                 startPosition = currentPosition;
-                //Debug.Log("startPosition: " + startPosition);
                 break;
             case InputActionPhase.Performed:
-                allowIncrease = true;
-                isDoubleTap = true;
-                if (totalTime >= minTimePress)
-                {
-                    isPress = true;
-                    totalTime = minTimePress;
-                    MyPress();
-                }
-                posfinal = mainCamera.transform.position;
+                
+                Debug.Log("Performed");
                 break;
             case InputActionPhase.Canceled:
                 if (isPress)
@@ -127,38 +142,54 @@ public class Test : MonoBehaviour
 
     private void MyTap()
     {
-        Debug.Log("Se presiono");
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);
         RaycastHit hit;
-
+        Debug.Log("JAJAJATap");
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, touchableLayers))
         {
+           
             int layerInt = hit.transform.gameObject.layer;
-         
+            Debug.Log("Se presiono el layer: "+ layerInt);
+            flag.SetActive(false);
+
             switch (layerInt)
             {
-                case 5: 
-                    
+                case 5:
+
                     break;
-                case 6: 
+                case 6:
                     currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                    if (currentObject.id != hit.transform.gameObject.GetComponent<VisionSensorPrimitive>().id)
+                    {
+                        isMovingArmy = true;
+                    }
+                    else isMovingArmy = false;
+
                     Debug.Log("NPCRojo");
                     break;
                 case 12: // Floor
-                    Debug.Log("Toco el suelo");
+                    //Debug.Log("Toco el suelo");
                     if (!canCreated)
                     {
                         if (currentObject != null)
                         {
                             Debug.Log("Podemos Mover Army");
                             warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+                            Debug.Log("Moveiendo a Army: " + hit.point);
+                            if (isMovingArmy)
+                            {
+                                flag.transform.position = hit.point;
+                                flag.SetActive(true);
+                            }
                         }
                     }
                     else
                     {
                         Debug.Log("Podemos Crear Army");
                         warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
+                        flag.SetActive(false);
                         canCreated = false;
+
                     }
                     break;
                 default:

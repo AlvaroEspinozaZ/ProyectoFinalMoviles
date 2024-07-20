@@ -128,7 +128,8 @@ public class VisionSensorPrimitive : MonoBehaviour
         if (direction != Vector3.zero)
         {
             float distance = Vector3.Distance(transform.position, destination);
-            if (distance > stopDistance)
+
+            if (distance > 0.2f)
             {
                 Vector3 movement = direction * speed * Time.deltaTime;
                 transform.position += movement;
@@ -173,7 +174,7 @@ public class VisionSensorPrimitive : MonoBehaviour
                 tmp.objectCollision = gameObject;
                 tmp.currentEnemy = myHealth;
                 tmp.isObjectDetected = true;
-                Debug.Log("Cambiamos");
+                //Debug.Log("Cambiamos");
             }
         }
       
