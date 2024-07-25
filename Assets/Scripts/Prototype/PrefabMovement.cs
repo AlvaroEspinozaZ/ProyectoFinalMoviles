@@ -4,18 +4,17 @@ public class PrefabMovement : MonoBehaviour
 {
     protected Animator animator;
     protected VisionSensorPrimitive visionSensor;
-    public int damage = 10;
     protected Health myHealth;
     protected Rigidbody _rgb;
     protected float timeToLastHit;
-    public float intervalAttack = 1.5f;
-    public float timeToDeath = 1.1f;
+    protected WarriorData _warriorData;
     public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
         myHealth = GetComponent<Health>();
         visionSensor = GetComponent<VisionSensorPrimitive>();
         animator = GetComponent<Animator>();
+        _warriorData = GetComponent<Health>()._warriorData;
     }
     public virtual void Update()
     {
@@ -45,14 +44,15 @@ public class PrefabMovement : MonoBehaviour
                     //Attack(intervalAttack, visionSensor.currentEnemy);
                     Debug.Log("Te vi");
                 }
-                else if (distance <= visionSensor.stopDistance)
+                else if (distance <= _warriorData.distanceAttack)
                 {
                     if (animator != null)
                     {
                         animator.SetBool("IsMove", false);
                         animator.SetBool("IsAttak", true);
                     }
-                    Attack(intervalAttack, visionSensor.currentEnemy);
+                    if (visionSensor.currentEnemy != null)
+                        Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);                    
                 }
                 else
                 {
@@ -106,13 +106,13 @@ public class PrefabMovement : MonoBehaviour
                 if (enemy.gameObject != null)
                 {
                     //Llamar evento de RecivirDaño
-                    enemy.eventTakeDamage?.Invoke(damage);
+                    enemy.eventTakeDamage?.Invoke(_warriorData.damage);
                     enemy.eventTakeDamageUI?.Invoke();
 
                     if (enemy.isDeath)
                     {
                         //Llamar evento de Muerte
-                        enemy.eventDead?.Invoke(timeToDeath);
+                        enemy.eventDead?.Invoke(_warriorData.timeToDeath);
                         //enemy.Died(timeToDeath);
                     }
                 }

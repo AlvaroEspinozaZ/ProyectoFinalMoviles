@@ -8,27 +8,39 @@ using UnityEngine.UI;
 using System;
 public class Health : MonoBehaviour
 {
-
-    public int characterHealth = 100;
-    private int maxHealth;
-    public bool isDeath => characterHealth <= 0;
     private CancellationTokenSource cancellationTokenSource;
     [Header("UI Character")]
+    [SerializeField] private WarriorData _general;
+    [HideInInspector] public WarriorData _warriorData;
+    public int characterHealth = 0;
+    public int maxHealth = 0;
+    public bool isDeath => characterHealth <= 0;
     public Image HealthBar;
     public Action<int> eventTakeDamage;
     public Action eventTakeDamageUI;
     public Action<float> eventDead;
+    private void Awake()
+    {
+        _warriorData = _general;
+        characterHealth = _warriorData.characterHealth;
+        maxHealth = characterHealth;
+        Debug.Log("isDeath " + isDeath);
+    }
     private void Start()
     {
-        maxHealth = characterHealth;
+        
     }
-    public async void Died(float time)
+    public void Died(float time)
+    {
+        StartCoroutine(DiedCorutine(time));
+    }
+    IEnumerator DiedCorutine(float time)
     {
         Vector3 tmp = new Vector3(transform.position.x, -10, transform.position.z);
-        List<Task> currentTask = new();
-        currentTask.Add(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
-        currentTask.Add(transform.DOMove(tmp, time).SetEase(Ease.OutBounce).AsyncWaitForCompletion());
-        await Task.WhenAll(currentTask);
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce));
+        sequence.Join(transform.DOMove(tmp, time).SetEase(Ease.OutBounce));
+        yield return sequence.WaitForCompletion();  
         Destroy(gameObject, time);
     }
     public async void Desapear(float time)

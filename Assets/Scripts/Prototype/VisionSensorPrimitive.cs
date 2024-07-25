@@ -5,9 +5,9 @@ public class VisionSensorPrimitive : MonoBehaviour
     [Header("Opciones")]
     public SphereCollider visionCollider;
     public LayerMask detectableLayers;
+    private WarriorData _warriorData;
     public float visionRange = 4.0f;
-    public float speed = 2.0f;
-    public float stopDistance = 2.0f;
+    public float stopDistance = 1.3f;
     public float rotationSpeed = 5.0f;
     public bool isTower = false;
     public int id;
@@ -22,9 +22,12 @@ public class VisionSensorPrimitive : MonoBehaviour
     public bool isCurrentMove = false;
     Vector3 destination;
     public Action<float, VisionSensorPrimitive,Health> counterAttack;
+    
     private void Start()
     {
-        if(visionCollider!=null)
+
+        _warriorData = GetComponent<Health>()._warriorData;
+        if (visionCollider!=null)
             visionCollider.radius = visionRange/transform.localScale.x;
     }
 
@@ -112,9 +115,9 @@ public class VisionSensorPrimitive : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, objectCollision.transform.position);
 
-        if (distance > stopDistance)
+        if (distance > _warriorData.distanceAttack)
         {
-            transform.position += direction * speed * Time.deltaTime;
+            transform.position += direction * _warriorData.speed * Time.deltaTime;
         }
 
         if (direction != Vector3.zero)
@@ -133,9 +136,9 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, destination);
 
-            if (distance > 0.8f)
+            if (distance > stopDistance)
             {
-                Vector3 movement = direction * speed * Time.deltaTime;
+                Vector3 movement = direction * _warriorData.speed * Time.deltaTime;
                 transform.position += movement;
 
                 RaycastHit hit;

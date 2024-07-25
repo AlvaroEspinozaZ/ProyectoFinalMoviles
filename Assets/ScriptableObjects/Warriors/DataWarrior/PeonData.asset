@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661e27fead71de468a2db4b5435b0b1, type: 3}
+  m_Name: PeonData
+  m_EditorClassIdentifier: 
+  characterHealth: 50
+  distanceAttack: 1.3
+  damage: 5
+  intervalAttack: 1.5
+  timeToDeath: 1.1
+  speed: 5
+  _strategy: {fileID: 11400000, guid: 09738c20cacc8d9498c1a185678a9998, type: 2}

@@ -143,7 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820ae42aa983a1949b0efc105cf54623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHealth: 120
+  _general: {fileID: 11400000, guid: 66af76767df3262458b0b29229ee28c8, type: 2}
+  _warriorData: {fileID: 11400000, guid: 66af76767df3262458b0b29229ee28c8, type: 2}
+  characterHealth: 0
   HealthBar: {fileID: 3147155507463570561}
 --- !u!114 &465953558817079342
 MonoBehaviour:
@@ -162,8 +164,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   visionRange: 6
-  speed: 2
-  stopDistance: 12
+  stopDistance: 1.3
   rotationSpeed: 5
   isTower: 0
   id: 0
@@ -186,10 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7cfe3b616080f4caa9e5f0b350276c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  intervalAttack: 1.5
-  timeToDeath: 1.1
-  eventAttack: {fileID: 11400000, guid: 18ee5d02056d4c84bbcd2382f82689f4, type: 2}
   easeDOT: 0
   bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
   bullets: []

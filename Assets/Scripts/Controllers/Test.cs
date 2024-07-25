@@ -30,7 +30,8 @@ public class Test : MonoBehaviour
     [SerializeField] private VisionSensorPrimitive currentObject;
     [SerializeField] private StrategySO warriorSO;
     [SerializeField] LayerMask touchableLayers;
-    [SerializeField] bool canCreated=false;
+    [SerializeField] bool couldCreated=false;
+    [SerializeField] bool canCreated = false;
     [SerializeField] bool isMovingArmy = false;
     [SerializeField] GameObject flag ;
     [Header("FeedBack")]
@@ -84,23 +85,27 @@ public class Test : MonoBehaviour
             swipeTimer = 0f;
             countHolding = 0;
         }
-
-        if (isPress ==true && isHolding)
+        if (mainCamera != null)
         {
-            if (countHolding == 0)
+            if (isPress == true && isHolding)
             {
-                positionCamera = currentpositionCamera;
+                if (countHolding == 0)
+                {
+                    positionCamera = currentpositionCamera;
+                }
+                swipeTimer = 0f;
+                float distance = Vector2.Distance(currentpositionCamera, positionCamera);
+                Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
+                if (distance >= swipeMinDistance)
+                {
+                    MySwipe(direction);
+                    swipeTimer = swipeLoopTime;
+                }
+              
+                countHolding++;
             }
-            swipeTimer = 0f;
-            float distance = Vector2.Distance(currentpositionCamera, positionCamera);
-            Vector2 direction =new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
-            if (distance >= swipeMinDistance)
-            {
-                MySwipe(direction);
-                swipeTimer = swipeLoopTime;
-            }
-            countHolding++;
         }
+
      
 
     }
@@ -150,7 +155,12 @@ public class Test : MonoBehaviour
                 {
                     isPress = false;
                     isTapped = false;
-                }                
+                }
+                if (couldCreated)
+                {
+                    canCreated = true;
+                    couldCreated = false;
+                }
                 break;
         }
     }
@@ -162,8 +172,8 @@ public class Test : MonoBehaviour
         Vector2 currentP = currentPosition;
         Vector2 screenSize = new Vector2(Screen.width, Screen.height);
         Vector2 centeredPosition = currentP - screenSize / 2;
-
-        currentpositionCamera = mainCamera.ViewportToScreenPoint( centeredPosition/1000000);
+        if(mainCamera!=null)
+            currentpositionCamera = mainCamera.ViewportToScreenPoint( centeredPosition/1000000);
     }
 
     private void MyTap()
@@ -177,7 +187,10 @@ public class Test : MonoBehaviour
             flag.SetActive(false);
             if (canCreated)
             {
-                warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+                if (currentObject != null)
+                {
+                    warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+                }
             }
             switch (layerInt)
             {
@@ -185,7 +198,8 @@ public class Test : MonoBehaviour
                   
                     break;       
                 case 6:
-                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();                    
+                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                    warriorSO = hit.transform.gameObject.GetComponent<Health>()._warriorData._strategy;
                     warriorSO.GetCharacter().ActiveSelectionArmy(currentObject._selection, currentObject.id);     
                     if (currentObject._selection)
                         isMovingArmy = true;
@@ -210,7 +224,8 @@ public class Test : MonoBehaviour
                     if (!canCreated)
                     {
                         if (currentObject != null)
-                        {                            
+                        {
+                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
                             if (isMovingArmy)
                             {
                                 flag.transform.position = hit.point;
@@ -293,7 +308,8 @@ public class Test : MonoBehaviour
     public void SetWarriorPrefab(StrategySO current)
     {
         warriorSO = current;
-        canCreated = true;
+        couldCreated = true;
+        canCreated = false;
     }
     public void resetAll(StrategySO current)
     {

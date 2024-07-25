@@ -26,7 +26,7 @@ public class P_RangeM : PrefabMovement
 
     public override void Update()
     {
-        if (myHealth.characterHealth <= 0)
+        if (myHealth._warriorData.characterHealth <= 0)
         {
             _rgb.isKinematic = true;
             if (animator != null)
@@ -58,8 +58,9 @@ public class P_RangeM : PrefabMovement
                     bullets[id].gameObject.SetActive(true);
                     if (enemy.gameObject != null)
                     {
-                        bullets[id].SetEnemy(enemy, damage);
-                        bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, intervalAttack).SetEase(Ease.InOutCubic);
+                        bullets[id].SetEnemy(enemy, _warriorData.damage);
+                        Debug.Log("DañoRango: "+ _warriorData.damage);
+                        bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, _warriorData.intervalAttack).SetEase(easeDOT);
                     }                 
                 }
                 id = (id + 1) % 5;
@@ -81,16 +82,18 @@ public class P_RangeM : PrefabMovement
                 new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
                 if (visionSensor.isTower)
                 {
-                    Attack(intervalAttack, visionSensor.currentEnemy);
+                    if(visionSensor.currentEnemy!=null)
+                        Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
                 }
-                else if (distance <= visionSensor.stopDistance)
+                else if (distance <= _warriorData.distanceAttack)
                 {
                     if (animator != null)
                     {
                         animator.SetBool("IsMove", false);
                         animator.SetBool("IsAttak", true);
                     }
-                    Attack(intervalAttack, visionSensor.currentEnemy);
+                    if (visionSensor.currentEnemy != null)
+                        Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
                 }
                 else
                 {
