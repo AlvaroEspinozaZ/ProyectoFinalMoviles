@@ -24,7 +24,6 @@ public class PrefabMovement : MonoBehaviour
             _rgb.isKinematic = true;
             if (animator != null)
                 animator.SetBool("IsDead", true);
-
         }
         else
         {
@@ -96,14 +95,14 @@ public class PrefabMovement : MonoBehaviour
             {
                 tmp.objectCollision = gameObject;
                 tmp.currentEnemy = myHealth;
-                tmp.isObjectDetected = true;  
+                tmp.isObjectDetected = true;
             }
             if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp != null)
             {
                 float distance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
 
                 tmp.counterAttack?.Invoke(distance, tmp, myHealth);
-           
+
                 if (enemy.gameObject != null)
                 {
                     //Llamar evento de RecivirDaño
@@ -121,17 +120,18 @@ public class PrefabMovement : MonoBehaviour
             }
         }
     }
+    public virtual void Buff(float timeToAttack, Health enemy)
+    {
+
+    }
 
     private void OnEnable()
     {
-           
+
     }
     private void OnDisable()
     {
-        
-    }
-    void UpdateLife(Health enemy)
-    {
-        
+
     }
 }
+
