@@ -21,22 +21,64 @@ public class SpamArmy : ScriptableObject
         
             left = tmpinit.z;
 
-        for (int i = 0; i< cant/10; i++)
+        for (int i = 0; i< cant/2; i++)
         {
             right = tmpinit.x;
-            for (int j = 0; j < cant/10; j++)
+            for (int j = 0; j < cant/2; j++)
             {
                 Vector3 tmp = new Vector3(right, tmpinit.y+2, left);
-                GameObject soldier=  Instantiate(prefab, tmp, Quaternion.identity);
-                soldier.GetComponent<VisionSensorPrimitive>().id= id;
-                listArmy.Add(soldier.GetComponent<VisionSensorPrimitive>());
+                CreateSoldier(tmp);
                 right += 4;
             }            
             left += 4;
         }
         id++;
     }
+ 
+    public void InstantiateTwoTriangles(Vector3 tmpinit)
+    {
+        listHide = new GameObject[cant];
+        int halfCount = cant / 2;
 
+        
+        float right = tmpinit.x - 20; 
+        float left = tmpinit.z;
+        int count = 0;
+        int rowCount = Mathf.CeilToInt(Mathf.Sqrt(halfCount));
+
+        for (int i = 0; i < rowCount && count < halfCount; i++)
+        {
+            for (int j = 0; j <= i && count < halfCount; j++)
+            {
+                Vector3 tmp = new Vector3(right + j * 4 - i * 2, tmpinit.y + 2, left + i * 4);
+                CreateSoldier(tmp);
+                count++;
+            }
+        }
+
+       
+        right = tmpinit.x + 20; 
+        left = tmpinit.z;
+        count = 0;
+
+        for (int i = 0; i < rowCount && count < halfCount; i++)
+        {
+            for (int j = 0; j <= i && count < halfCount; j++)
+            {
+                Vector3 tmp = new Vector3(right + j * 4 - i * 2, tmpinit.y + 2, left + i * 4);
+                CreateSoldier(tmp);
+                count++;
+            }
+        }
+
+        id++;
+    }
+    private void CreateSoldier(Vector3 position)
+    {
+        GameObject soldier = Instantiate(prefab, position, Quaternion.identity);
+        soldier.GetComponent<VisionSensorPrimitive>().id = id;
+        listArmy.Add(soldier.GetComponent<VisionSensorPrimitive>());
+    }
     public void MoveArmy(Vector3 posToMove,int id)
     {
             for (int i = 0; i < listArmy.Count; i++)

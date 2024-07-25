@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyAlfil
   m_EditorClassIdentifier: 
   prefab: {fileID: 85292943021911798, guid: 5f60d5e191b711d43a079b220fe53ed2, type: 3}
-  cant: 20
+  cant: 4
   id: 0
   listHide: []
   listArmy: []

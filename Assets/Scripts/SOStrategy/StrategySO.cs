@@ -6,13 +6,17 @@ public abstract class StrategySO : ScriptableObject
 {
     [SerializeField] protected SpamArmy prefabBase;
     [SerializeField] protected Sprite profilePicture;
-    [SerializeField] protected int costSpawn;
-    [SerializeField] protected int maxSpawn;
-    [SerializeField] protected float rechargeTime;
+    [SerializeField] public int costSpawn;
+    [SerializeField] public int maxSpawn;
+    [SerializeField] public float rechargeTime;
+    public int CostSpawm => costSpawn;
+    public int MaxSpawn => maxSpawn;
+    public float RechargeTime => rechargeTime;
+    public int cant => prefabBase.cant;
     public virtual void Instantiate(Vector3 tmpinit)
     {
         prefabBase.Instatiate(tmpinit);
-    }
+    } 
     public virtual SpamArmy GetCharacter()
     { 
         return prefabBase;

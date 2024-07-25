@@ -15,5 +15,5 @@ MonoBehaviour:
   prefabBase: {fileID: 11400000, guid: a4893db52a6c7614da03807476d95699, type: 2}
   profilePicture: {fileID: 21300000, guid: 1de364abacff37f4eb6b3103f44b66b0, type: 3}
   costSpawn: 0
-  maxSpawn: 0
+  maxSpawn: 3
   rechargeTime: 0

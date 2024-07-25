@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyReyna
   m_EditorClassIdentifier: 
   prefab: {fileID: 7268779247441332405, guid: 3d6d64ab690385b4bb1332b3df3177be, type: 3}
-  cant: 20
+  cant: 4
   id: 0
   listHide: []
   listArmy: []

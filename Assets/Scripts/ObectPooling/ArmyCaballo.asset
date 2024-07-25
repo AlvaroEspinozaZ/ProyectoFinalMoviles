@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyCaballo
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  cant: 20
+  cant: 4
   id: 0
   listHide: []
   listArmy: []

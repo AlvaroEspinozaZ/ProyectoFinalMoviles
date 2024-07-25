@@ -10,10 +10,6 @@ public class PrefabMovement : MonoBehaviour
     protected float timeToLastHit;
     public float intervalAttack = 1.5f;
     public float timeToDeath = 1.1f;
-    public HanldeEvent eventAttack;
-
-
-
     public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
@@ -107,8 +103,7 @@ public class PrefabMovement : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
 
                 tmp.counterAttack?.Invoke(distance, tmp, myHealth);
-                //LLamar evento de atacar
-                eventAttack.CallEventGeneral();
+           
                 if (enemy.gameObject != null)
                 {
                     //Llamar evento de RecivirDaño
@@ -129,9 +124,8 @@ public class PrefabMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        //eventAttack.ActionHealth +=;
-      
-}
+           
+    }
     private void OnDisable()
     {
         

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyPeon
   m_EditorClassIdentifier: 
   prefab: {fileID: 8188779346697298606, guid: b47ab861b98beb342b20b925c586c12c, type: 3}
-  cant: 30
-  id: 9
+  cant: 4
+  id: 0
   listHide: []
   listArmy: []

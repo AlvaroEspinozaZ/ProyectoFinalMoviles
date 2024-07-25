@@ -82,11 +82,15 @@ public class VisionSensorPrimitive : MonoBehaviour
             }
             
             isObjectDetected = true;
-            if (currentEnemy.isDeath)
+            if (currentEnemy != null)
             {
-                isObjectDetected = false;
-                visionCollider.enabled = false;
+                if (currentEnemy.isDeath)
+                {
+                    isObjectDetected = false;
+                    visionCollider.enabled = false;
+                }
             }
+           
             visionCollider.enabled = true;
         }
     }
@@ -129,7 +133,7 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, destination);
 
-            if (distance > 0.5f)
+            if (distance > 0.8f)
             {
                 Vector3 movement = direction * speed * Time.deltaTime;
                 transform.position += movement;

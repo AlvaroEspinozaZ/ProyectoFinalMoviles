@@ -9,18 +9,21 @@ public class Test : MonoBehaviour
 {
 
     [Header("InputsTaps")]
-    [SerializeField] private float totalTime = 0f;
-    [SerializeField] private float swipeTimer = 0f;
-    [SerializeField] private bool allowIncrease = false;
+    //Tap
+    private float totalTime = 0f;
+    private float swipeTimer = 0f;
+    private bool allowIncrease = false;
     private float maxTimeDT = 0.2f;
     private float minTimePress = 0.15f;
-    private float swipeLoopTime = 0.12f;
-    private float swipeMinDistance = 0.3f;
-    Vector3 currentPosition;
-    Vector2 startPosition;
-    bool isDoubleTap = false;
+    //swipe
+    private float swipeLoopTime = 2f;
+    private float swipeMinDistance = 0.65f;
     bool isTapped = true;
     bool isPress = false;
+    bool isHolding = false;
+    private int countHolding = 0;
+    //double tap
+    bool isDoubleTap = false;
     private float doubleTapTime = 0.3f; 
     private float lastTapTime = 0f;
     [Header("Strategy")]
@@ -30,7 +33,14 @@ public class Test : MonoBehaviour
     [SerializeField] bool canCreated=false;
     [SerializeField] bool isMovingArmy = false;
     [SerializeField] GameObject flag ;
-    [Header("Camera")]
+    [Header("FeedBack")]
+    [SerializeField] GameObject units;
+    public GameObject[] listHide;
+    public int id;
+    float right = 0;
+    float left = 0;
+    [Header("Camera******")]
+    Vector3 currentPosition;
     [SerializeField] Camera mainCamera;
     Vector2 positionCamera;
     Vector2 currentpositionCamera;
@@ -41,37 +51,57 @@ public class Test : MonoBehaviour
     private void Start()
     {
         flag.SetActive(false);
+        listHide = new GameObject[warriorSO.cant];
+        for(int i = 0; i< listHide.Length; i++)
+        {
+            listHide[i] = Instantiate(units);
+            listHide[i].SetActive(false);
+        }
     }
     private void Update()
     {
         if (allowIncrease)
+        {
             totalTime += Time.deltaTime;
+            isHolding = false;
+        }
 
         if (totalTime >= maxTimeDT)
         {
             allowIncrease = false;
-            totalTime = 0f;
-            swipeTimer = 0f;
+            totalTime = 0f;            
             isDoubleTap = false;            
             isTapped = true;
-            isPress = false;
+            isHolding = true;
         }
-
         if (isPress)
         {
-            swipeTimer += Time.deltaTime;
-            if (swipeTimer >= swipeLoopTime)
-            {
-                swipeTimer = 0f;
-                float distance = Vector2.Distance(positionCamera, currentpositionCamera);
-
-                if (distance >= swipeMinDistance)
-                {
-                    MySwipe();
-                }
-                startPosition = currentPosition;
-            }
+            swipeTimer += Time.deltaTime;            
         }
+        if (swipeTimer >= swipeLoopTime)
+        {
+            isPress = false;
+            swipeTimer = 0f;
+            countHolding = 0;
+        }
+
+        if (isPress ==true && isHolding)
+        {
+            if (countHolding == 0)
+            {
+                positionCamera = currentpositionCamera;
+            }
+            swipeTimer = 0f;
+            float distance = Vector2.Distance(currentpositionCamera, positionCamera);
+            Vector2 direction =new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
+            if (distance >= swipeMinDistance)
+            {
+                MySwipe(direction);
+                swipeTimer = swipeLoopTime;
+            }
+            countHolding++;
+        }
+     
 
     }
     private void FixedUpdate()
@@ -92,7 +122,7 @@ public class Test : MonoBehaviour
                 break;
             case InputActionPhase.Started:
                 //Debug.Log("Started");              
-                
+                isPress = true;
                 if (Time.time - lastTapTime < doubleTapTime)
                 {
                     MyDoubleTap();
@@ -103,24 +133,24 @@ public class Test : MonoBehaviour
                 {                    
                     if (totalTime >= minTimePress)
                     {
-                        isPress = true;
+                        //isPress = true;
                         totalTime = minTimePress;
                         MyPress();
                     }
                 }
                 lastTapTime = Time.time;                
-                positionCamera = currentpositionCamera;
-                startPosition = currentPosition;
                 break;
             case InputActionPhase.Performed:
                 allowIncrease = true;
                 isDoubleTap = true;
-                posfinal = mainCamera.transform.position;
-                Debug.Log("Performed");
                 break;
             case InputActionPhase.Canceled:
+                //Debug.Log("Canceled");
                 if (isPress)
+                {
+                    isPress = false;
                     isTapped = false;
+                }                
                 break;
         }
     }
@@ -136,7 +166,6 @@ public class Test : MonoBehaviour
         currentpositionCamera = mainCamera.ViewportToScreenPoint( centeredPosition/1000000);
     }
 
-
     private void MyTap()
     {
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);
@@ -146,41 +175,60 @@ public class Test : MonoBehaviour
            
             int layerInt = hit.transform.gameObject.layer;
             flag.SetActive(false);
-
+            if (canCreated)
+            {
+                warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+            }
             switch (layerInt)
             {
                 case 5:
-
-                    break;
+                  
+                    break;       
                 case 6:
-                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();                    
                     warriorSO.GetCharacter().ActiveSelectionArmy(currentObject._selection, currentObject.id);     
                     if (currentObject._selection)
                         isMovingArmy = true;
                     else isMovingArmy = false;
+                    break;
+                case 11:
+                    if (!canCreated)
+                    {
+                        if (currentObject != null)
+                        {
+                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+                            if (isMovingArmy)
+                            {
+                                flag.transform.position = hit.point;
 
+                                flag.SetActive(true);
+                            }
+                        }
+                    }
                     break;
                 case 12: // Floor            
                     if (!canCreated)
                     {
                         if (currentObject != null)
                         {                            
-                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);                            
                             if (isMovingArmy)
                             {
                                 flag.transform.position = hit.point;
+
                                 flag.SetActive(true);
                             }
                         }
                     }
                     else
                     {
-                        Debug.Log("Podemos Crear Army");
-                        Debug.Log(canCreated);
-                        warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
+                        if (warriorSO.maxSpawn > 0)
+                        {                           
+                            warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
+                            warriorSO.maxSpawn--;
+                        }
                         flag.SetActive(false);
                         canCreated = false;
-
+            
                     }
                     break;
                 default:
@@ -196,58 +244,61 @@ public class Test : MonoBehaviour
 
     private void MyDoubleTap()
     {
-        Debug.Log("DoubleTap");
+        // Debug.Log("DoubleTap");
+        resetAll(warriorSO);
+        
     }
-    private void MySwipe()
+
+    private void MySwipe(Vector2 direction)
     {
-        float horizontal = positionCamera.x - currentpositionCamera.x;
-        float vertical = positionCamera.y - currentpositionCamera.y;
-        if (horizontal >= 0.5f)
+        float horizontal = direction.x;
+        float vertical = direction.y;
+        if(Mathf.Abs(horizontal)> Mathf.Abs(vertical))
         {
-            Debug.Log("Right");
-            Debug.Log(horizontal);
-            posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -27);
-            MoveCamera(delay, posfinal);
+            if (horizontal >= 0.2f)
+            {
+                //Debug.Log("Right");
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 27);
+                MoveCamera(delay, posfinal);
+            }
+            else if (horizontal <= -0.2f)
+            {
+                //Debug.Log("Left");    
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -27);
+                MoveCamera(delay, posfinal);
+            }
         }
-        else if (horizontal <= -0.5f)
+        else if(Mathf.Abs(vertical) > Mathf.Abs(horizontal))
         {
-            Debug.Log("Left");
-            Debug.Log(horizontal);
-            posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y,27);
-            MoveCamera(delay, posfinal);
+            if (vertical >= 0.2f)
+            {
+                //Debug.Log("Up");
+                //posfinal = new Vector3(28, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                //MoveCamera(delay, posfinal);
+            }
+            else if (vertical <= -0.2f)
+            {
+                //Debug.Log("Down");
+                //posfinal = new Vector3(-28, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                //MoveCamera(delay, posfinal);
+      
+            }
         }
-        else if(vertical >= 0)
-        {
-            Debug.Log("Up");
-            Debug.Log(vertical);
-            posfinal = new Vector3(28, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            MoveCamera(delay, posfinal);
-            RotateCamera(delay,-180);
-        }
-        else if (vertical <= 0)
-        {
-            Debug.Log("Down");
-            Debug.Log(vertical);
-            posfinal = new Vector3(-28, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            MoveCamera(delay, posfinal);
-            RotateCamera(delay , 180);
-        }
-        Debug.Log("Swipe");
     }
-    public async void MoveCamera(float time,Vector3 posfinal)
-    {        
-        await mainCamera.transform.DOMove(posfinal, time).SetEase(easeDOT).AsyncWaitForCompletion();
-    }
-    public async void RotateCamera(float time,  float rotate)
+
+    public void MoveCamera(float time, Vector3 posfinal)
     {
-        float rotateTarget = Mathf.Clamp(mainCamera.transform.rotation.y + rotate,-90,90);
-        Vector3 tmp = new Vector3(mainCamera.transform.rotation.x, rotateTarget, mainCamera.transform.rotation.z);
-        await mainCamera.transform.DORotate(tmp, time).SetEase(easeDOT).AsyncWaitForCompletion();
+        mainCamera.transform.DOMove(posfinal, time).SetEase(easeDOT);
     }
-    //Buttons
     public void SetWarriorPrefab(StrategySO current)
     {
         warriorSO = current;
         canCreated = true;
+    }
+    public void resetAll(StrategySO current)
+    {
+        warriorSO = current;
+        MoveCamera(0, mainCamera.transform.position);
+        canCreated = false;
     }
 }

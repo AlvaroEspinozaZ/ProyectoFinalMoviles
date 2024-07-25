@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0d8384e31149c418278d63f8c98033, type: 3}
   m_Name: ArmyTorre
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7949415411313337412, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
-  cant: 20
+  prefab: {fileID: 3856224903289508559, guid: 5bc61ed55319dee479b3c408dbdaf2c6, type: 3}
+  cant: 4
   id: 0
   listHide: []
   listArmy: []
