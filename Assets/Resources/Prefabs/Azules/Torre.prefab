@@ -331,6 +331,7 @@ Transform:
   - {fileID: 8906437950796715639}
   - {fileID: 1936199514253174787}
   - {fileID: 5474380159853559107}
+  - {fileID: 5421795691693320477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1984651956222992292
@@ -435,6 +436,7 @@ MonoBehaviour:
   _general: {fileID: 11400000, guid: e7c1280bc78b5f742a9c5607fdf0e464, type: 2}
   _warriorData: {fileID: 11400000, guid: e7c1280bc78b5f742a9c5607fdf0e464, type: 2}
   characterHealth: 0
+  maxHealth: 0
   HealthBar: {fileID: 3333257623915248506}
 --- !u!114 &2453357323677701416
 MonoBehaviour:
@@ -449,9 +451,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionCollider: {fileID: 4893658622418544953}
+  pos: {fileID: 5421795691693320477}
   detectableLayers:
     serializedVersion: 2
     m_Bits: 320
+  layersAlied:
+    serializedVersion: 2
+    m_Bits: 0
   visionRange: 6
   stopDistance: 1.3
   rotationSpeed: 5
@@ -834,6 +840,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7990021946955270691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8608141839365652908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5421795691693320477}
+  m_Layer: 7
+  m_Name: POINT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5421795691693320477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608141839365652908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: -0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9086901798469047133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8897409059240363157
 GameObject:

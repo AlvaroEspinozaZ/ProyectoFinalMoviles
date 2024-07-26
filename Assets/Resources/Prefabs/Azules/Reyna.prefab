@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &189604246516007643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1286544757200700866}
+  m_Layer: 7
+  m_Name: POINT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1286544757200700866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189604246516007643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: -0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6072630396033280828}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &379170674049856615
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +563,7 @@ Transform:
   - {fileID: 3737342716769089333}
   - {fileID: 1942913268879292994}
   - {fileID: 9133391156419057164}
+  - {fileID: 1286544757200700866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6676614654112911335
@@ -636,6 +668,7 @@ MonoBehaviour:
   _general: {fileID: 11400000, guid: ecb4fa0a8aa90bf488a6bfe136ee9117, type: 2}
   _warriorData: {fileID: 11400000, guid: ecb4fa0a8aa90bf488a6bfe136ee9117, type: 2}
   characterHealth: 0
+  maxHealth: 0
   HealthBar: {fileID: 1980081059246477365}
 --- !u!114 &4342115706943098322
 MonoBehaviour:
@@ -650,9 +683,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionCollider: {fileID: 7375057866286548037}
+  pos: {fileID: 1286544757200700866}
   detectableLayers:
     serializedVersion: 2
     m_Bits: 320
+  layersAlied:
+    serializedVersion: 2
+    m_Bits: 0
   visionRange: 6
   stopDistance: 1.3
   rotationSpeed: 5

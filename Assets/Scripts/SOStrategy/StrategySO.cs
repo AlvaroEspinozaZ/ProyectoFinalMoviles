@@ -10,7 +10,8 @@ public abstract class StrategySO : ScriptableObject
     [SerializeField] public int maxSpawn;
     [SerializeField] public float rechargeTime;
     public int CostSpawm => costSpawn;
-    public int MaxSpawn => maxSpawn;
+    public int MaxSpawn {get { return maxSpawn; } set { maxSpawn = value; }
+    }
     public float RechargeTime => rechargeTime;
     public int cant => prefabBase.cant;
     public virtual void Instantiate(Vector3 tmpinit)

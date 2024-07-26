@@ -8,6 +8,7 @@ public class PrefabMovement : MonoBehaviour
     protected Rigidbody _rgb;
     protected float timeToLastHit;
     protected WarriorData _warriorData;
+    protected DOTController _dOTController;
     public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
@@ -15,6 +16,7 @@ public class PrefabMovement : MonoBehaviour
         visionSensor = GetComponent<VisionSensorPrimitive>();
         animator = GetComponent<Animator>();
         _warriorData = GetComponent<Health>()._warriorData;
+        _dOTController = GetComponent<DOTController>();
     }
     public virtual void Update()
     {
@@ -119,11 +121,7 @@ public class PrefabMovement : MonoBehaviour
                 timeToLastHit = Time.time;
             }
         }
-    }
-    public virtual void Buff(float timeToAttack, Health enemy)
-    {
-
-    }
+    } 
 
     private void OnEnable()
     {

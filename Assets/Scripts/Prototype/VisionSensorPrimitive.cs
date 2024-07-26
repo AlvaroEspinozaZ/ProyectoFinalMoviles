@@ -1,10 +1,14 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+
 public class VisionSensorPrimitive : MonoBehaviour
 {
     [Header("Opciones")]
     public SphereCollider visionCollider;
+
     public LayerMask detectableLayers;
+    public LayerMask layersAlied;
     private WarriorData _warriorData;
     public float visionRange = 4.0f;
     public float stopDistance = 1.3f;
@@ -17,7 +21,8 @@ public class VisionSensorPrimitive : MonoBehaviour
     [Header("Personaje Detectado")]
     public GameObject objectCollision;
     public Health currentEnemy;
-    public Health[] currentAlied;
+    public Health currentAlied;
+    public List<Health> _alieds;
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
     Vector3 destination;
@@ -25,7 +30,6 @@ public class VisionSensorPrimitive : MonoBehaviour
     
     private void Start()
     {
-
         _warriorData = GetComponent<Health>()._warriorData;
         if (visionCollider!=null)
             visionCollider.radius = visionRange/transform.localScale.x;
@@ -46,6 +50,10 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             MoveTowardsObject();
         }
+        //if (objectCollision == null)
+        //{
+        //    currentEnemy = null;
+        //}
         FeedBackSelectionCharacter();
         if (objectCollision == gameObject)
         {
@@ -60,12 +68,10 @@ public class VisionSensorPrimitive : MonoBehaviour
             if (_isSelection == true)
             {
                 _selection.SetActive(false);
-                //_isSelection = false;
             }
             else
             {
                 _selection.SetActive(true);
-                //_isSelection = true;
             }
         }
    
@@ -79,11 +85,6 @@ public class VisionSensorPrimitive : MonoBehaviour
             {
                 currentEnemy = objectCollision.GetComponent<Health>();
             }
-            else
-            {
-                //currentAlied[0] = objectCollision.GetComponent<Health>();
-            }
-            
             isObjectDetected = true;
             if (currentEnemy != null)
             {
@@ -93,8 +94,20 @@ public class VisionSensorPrimitive : MonoBehaviour
                     visionCollider.enabled = false;
                 }
             }
-           
             visionCollider.enabled = true;
+
+        }
+        //if(other.gameObject.layer == gameObject.layer)
+        //{
+        //    currentAlied = objectCollision.GetComponent<Health>();
+        //    _alieds.Add(other.gameObject.GetComponent<Health>());
+        //    if (currentAlied!=null)
+        //    {
+        //        _alieds
+        //    }
+        //}
+        if (((1 << other.gameObject.layer) & detectableLayers) != 0)
+        {
         }
     }
 
@@ -112,8 +125,9 @@ public class VisionSensorPrimitive : MonoBehaviour
         isCurrentMove = false;
         Vector3 direction = (objectCollision.transform.position - transform.position).normalized;
         direction.y = 0;
-
-        float distance = Vector3.Distance(transform.position, objectCollision.transform.position);
+        Vector3 mine = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 target = new Vector3(objectCollision.transform.position.x, 0, objectCollision.transform.position.z);
+        float distance = Vector3.Distance(mine, target);
 
         if (distance > _warriorData.distanceAttack)
         {
@@ -134,7 +148,9 @@ public class VisionSensorPrimitive : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
-            float distance = Vector3.Distance(transform.position, destination);
+            Vector3 mine = new Vector3(transform.position.x, 0, transform.position.z);
+            Vector3 target = new Vector3(destination.x, 0, destination.z);
+            float distance = Vector3.Distance(mine, target);
 
             if (distance > stopDistance)
             {

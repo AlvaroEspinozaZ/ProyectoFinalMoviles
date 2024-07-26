@@ -82,8 +82,12 @@ public class P_RangeM : PrefabMovement
                 new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
                 if (visionSensor.isTower)
                 {
-                    if(visionSensor.currentEnemy!=null)
-                        Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
+                    if (visionSensor.currentEnemy != null)
+                    {
+                        if(!visionSensor.currentEnemy.isDeath)
+                            Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
+
+                    }
                 }
                 else if (distance <= _warriorData.distanceAttack)
                 {
@@ -126,5 +130,9 @@ public class P_RangeM : PrefabMovement
             }
 
         }
+    }
+    public virtual void Buff(float timeToAttack, Health enemy)
+    {
+
     }
 }

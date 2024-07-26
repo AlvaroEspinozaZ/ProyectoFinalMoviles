@@ -22,4 +22,8 @@ public class P_MeleeMov : PrefabMovement
     {
         base.HandleMovementAndAttack();
     }
+    public virtual void Buff(float timeToAttack, Health enemy)
+    {
+
+    }
 }

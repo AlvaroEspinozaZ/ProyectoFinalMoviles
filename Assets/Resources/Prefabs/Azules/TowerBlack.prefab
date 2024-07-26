@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1627568060487682655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558338278774514081}
+  m_Layer: 9
+  m_Name: POIN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1558338278774514081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627568060487682655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3897515681562423008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5140639387352520667
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +128,7 @@ GameObject:
   - component: {fileID: 5860814098076161393}
   - component: {fileID: 2901467764397157871}
   - component: {fileID: 1197170727526649454}
+  - component: {fileID: 7336529851380447578}
   m_Layer: 9
   m_Name: TowerBlack
   m_TagString: Untagged
@@ -119,6 +151,7 @@ Transform:
   m_Children:
   - {fileID: 504057433805141869}
   - {fileID: 2779221251620357372}
+  - {fileID: 1558338278774514081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8161254347490210113
@@ -157,6 +190,7 @@ MonoBehaviour:
   _general: {fileID: 11400000, guid: 8cb172fca795d28419a978779cfbee45, type: 2}
   _warriorData: {fileID: 11400000, guid: 8cb172fca795d28419a978779cfbee45, type: 2}
   characterHealth: 0
+  maxHealth: 0
   HealthBar: {fileID: 4840029187053748933}
 --- !u!114 &5860814098076161393
 MonoBehaviour:
@@ -174,6 +208,9 @@ MonoBehaviour:
   detectableLayers:
     serializedVersion: 2
     m_Bits: 0
+  layersAlied:
+    serializedVersion: 2
+    m_Bits: 0
   visionRange: 0
   stopDistance: 1.3
   rotationSpeed: 0
@@ -183,7 +220,8 @@ MonoBehaviour:
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
-  currentAlied: []
+  currentAlied: {fileID: 0}
+  _alieds: []
   isObjectDetected: 0
   isCurrentMove: 0
 --- !u!54 &2901467764397157871
@@ -228,6 +266,27 @@ MonoBehaviour:
   easeDOT: 0
   bullet: {fileID: 7143667307510264112, guid: a7c1c18a79b377043b9fac301b006002, type: 3}
   bullets: []
+--- !u!135 &7336529851380447578
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593133917494863377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7162463842161541419
 PrefabInstance:
   m_ObjectHideFlags: 0
