@@ -59,7 +59,6 @@ public class P_RangeM : PrefabMovement
                     if (enemy.gameObject != null)
                     {
                         bullets[id].SetEnemy(enemy, _warriorData.damage);
-                        Debug.Log("DañoRango: "+ _warriorData.damage);
                         bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, _warriorData.intervalAttack).SetEase(easeDOT);
                     }                 
                 }

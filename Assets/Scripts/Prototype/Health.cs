@@ -19,12 +19,12 @@ public class Health : MonoBehaviour
     public Action<int> eventTakeDamage;
     public Action eventTakeDamageUI;
     public Action<float> eventDead;
+    public Action<PrefabMovement> clearList;
     private void Awake()
     {
         _warriorData = _general;
         characterHealth = _warriorData.characterHealth;
         maxHealth = characterHealth;
-        Debug.Log("isDeath " + isDeath);
     }
     private void Start()
     {
@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOScale(Vector3.zero, time / 3).SetEase(Ease.OutBounce));
         sequence.Join(transform.DOMove(tmp, time).SetEase(Ease.OutBounce));
-        yield return sequence.WaitForCompletion();  
+        yield return sequence.WaitForCompletion();        
         Destroy(gameObject, time);
     }
     public async void Desapear(float time)

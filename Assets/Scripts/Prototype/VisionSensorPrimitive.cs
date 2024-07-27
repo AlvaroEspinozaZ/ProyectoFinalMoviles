@@ -10,7 +10,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public LayerMask detectableLayers;
     public LayerMask layersAlied;
     private WarriorData _warriorData;
-    public float visionRange = 4.0f;
+    public float visionRange = 6.0f;
     public float stopDistance = 1.3f;
     public float rotationSpeed = 5.0f;
     public bool isTower = false;
@@ -25,6 +25,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public List<Health> _alieds;
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
+    private bool areEnemysNear = false;
     Vector3 destination;
     public Action<float, VisionSensorPrimitive,Health> counterAttack;
     
@@ -61,6 +62,11 @@ public class VisionSensorPrimitive : MonoBehaviour
             currentEnemy = null;
             isObjectDetected = false;
         }
+        if(areEnemysNear && objectCollision==null&& currentEnemy == null)
+        {
+            visionCollider.enabled = false;
+            visionCollider.enabled = true;
+        }
     }
     public void FeedBackSelectionCharacter()
     {
@@ -94,20 +100,21 @@ public class VisionSensorPrimitive : MonoBehaviour
                     visionCollider.enabled = false;
                 }
             }
-            visionCollider.enabled = true;
-
         }
-        //if(other.gameObject.layer == gameObject.layer)
-        //{
-        //    currentAlied = objectCollision.GetComponent<Health>();
-        //    _alieds.Add(other.gameObject.GetComponent<Health>());
-        //    if (currentAlied!=null)
-        //    {
-        //        _alieds
-        //    }
-        //}
+        visionCollider.enabled = true;
+
         if (((1 << other.gameObject.layer) & detectableLayers) != 0)
         {
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(((1 << other.gameObject.layer) & detectableLayers) != 0){
+            areEnemysNear = true;
+        }
+        else
+        {
+            areEnemysNear = false;
         }
     }
 
@@ -117,6 +124,7 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             isObjectDetected = false;
             objectCollision = null;
+            areEnemysNear = false;
         }
     }
 
@@ -176,8 +184,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     }
 
     public void SelectDestination(Vector3 position)
-    {
-        
+    {        
         destination = position;
         isCurrentMove = true;
     }

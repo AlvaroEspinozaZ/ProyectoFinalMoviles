@@ -35,8 +35,7 @@ public class Test : MonoBehaviour
     [SerializeField] bool isMovingArmy = false;
     [SerializeField] GameObject flag ;
     [Header("FeedBack")]
-    [SerializeField] GameObject units;
-    public GameObject[] listHide;
+
     public int id;
     float right = 0;
     float left = 0;
@@ -52,12 +51,6 @@ public class Test : MonoBehaviour
     private void Start()
     {
         flag.SetActive(false);
-        listHide = new GameObject[warriorSO.cant];
-        for(int i = 0; i< listHide.Length; i++)
-        {
-            listHide[i] = Instantiate(units);
-            listHide[i].SetActive(false);
-        }
     }
     private void Update()
     {

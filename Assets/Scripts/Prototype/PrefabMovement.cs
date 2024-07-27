@@ -9,6 +9,7 @@ public class PrefabMovement : MonoBehaviour
     protected float timeToLastHit;
     protected WarriorData _warriorData;
     protected DOTController _dOTController;
+    public VisionSensorPrimitive VisionSensor=> visionSensor;
     public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
@@ -113,7 +114,9 @@ public class PrefabMovement : MonoBehaviour
 
                     if (enemy.isDeath)
                     {
+                        PrefabMovement prefabMovement = enemy.GetComponent<PrefabMovement>();
                         //Llamar evento de Muerte
+                        enemy.clearList?.Invoke(prefabMovement);
                         enemy.eventDead?.Invoke(_warriorData.timeToDeath);
                         //enemy.Died(timeToDeath);
                     }

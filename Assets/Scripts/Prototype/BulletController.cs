@@ -29,6 +29,9 @@ public class BulletController : MonoBehaviour
                 {
                     if (enemy.gameObject != null)
                     {
+                        PrefabMovement prefabMovement = enemy.GetComponent<PrefabMovement>();
+                        //Llamar evento de Muerte
+                        enemy.clearList?.Invoke(prefabMovement);
                         enemy.eventDead?.Invoke(timeToDeath);
                     }
                 }

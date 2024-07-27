@@ -9,16 +9,13 @@ public class SpamArmy : ScriptableObject
     public GameObject prefab;
     public int cant;
     public int id;
-    public GameObject[] listHide;
-    public List<VisionSensorPrimitive> listArmy;
+    public List<PrefabMovement> listArmy;
     float right = 0;
     float left = 0;
 
 
     public void Instatiate(Vector3 tmpinit)
     {
-        listHide = new GameObject[cant];
-        
             left = tmpinit.z;
 
         for (int i = 0; i< cant/2; i++)
@@ -37,7 +34,6 @@ public class SpamArmy : ScriptableObject
  
     public void InstantiateTwoTriangles(Vector3 tmpinit)
     {
-        listHide = new GameObject[cant];
         int halfCount = cant / 2;
 
         
@@ -76,19 +72,40 @@ public class SpamArmy : ScriptableObject
     private void CreateSoldier(Vector3 position)
     {
         GameObject soldier = Instantiate(prefab, position, Quaternion.identity);
-        soldier.GetComponent<VisionSensorPrimitive>().id = id;
-        listArmy.Add(soldier.GetComponent<VisionSensorPrimitive>());
+        VisionSensorPrimitive visionSensor = soldier.GetComponent<VisionSensorPrimitive>();
+        visionSensor.id = id;
+        Health health = soldier.GetComponent<Health>();
+        health.clearList += CLearSoldier;
+        PrefabMovement movement = soldier.GetComponent<PrefabMovement>();
+        listArmy.Add(movement);
+    }
+    private void CLearSoldier(PrefabMovement soldierDied)
+    {
+        listArmy.Remove(soldierDied);
+        Debug.Log(soldierDied);
+
     }
     public void MoveArmy(Vector3 posToMove,int id)
     {
             for (int i = 0; i < listArmy.Count; i++)
             {
-                if(listArmy[i].id == id)
+                if(listArmy[i].VisionSensor.id == id)
                 {
-                    listArmy[i].SelectDestination(posToMove);
+                    listArmy[i].VisionSensor.SelectDestination(posToMove);
 
                 }
         }        
+    }
+    public void ChangeTargetEnemy(Health newTargetEnemy)
+    {
+        for (int i = 0; i < listArmy.Count; i++)
+        {
+            if (listArmy[i].VisionSensor.id == id)
+            {
+                listArmy[i].VisionSensor.currentEnemy=newTargetEnemy;
+                listArmy[i].VisionSensor.objectCollision = newTargetEnemy.gameObject;
+            }
+        }
     }
     public void ActiveSelectionArmy(bool selection, int id)
     {
@@ -96,9 +113,9 @@ public class SpamArmy : ScriptableObject
         {
             for (int i = 0; i < listArmy.Count; i++)
             {
-                if (listArmy[i].id == id)
+                if (listArmy[i].VisionSensor.id == id)
                 {
-                    listArmy[i]._isSelection = false; ;
+                    listArmy[i].VisionSensor._isSelection = false; ;
 
                 }
             }
@@ -107,9 +124,9 @@ public class SpamArmy : ScriptableObject
         {
             for (int i = 0; i < listArmy.Count; i++)
             {
-                if (listArmy[i].id == id)
+                if (listArmy[i].VisionSensor.id == id)
                 {
-                    listArmy[i]._isSelection = true;
+                    listArmy[i].VisionSensor._isSelection = true;
 
                 }
             }
@@ -120,9 +137,5 @@ public class SpamArmy : ScriptableObject
     {
         id = 0;
         listArmy.Clear();
-        if (listHide != null)
-        {
-            listHide = null;
-        }
     }
 }

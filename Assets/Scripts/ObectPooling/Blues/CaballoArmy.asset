@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0d8384e31149c418278d63f8c98033, type: 3}
+  m_Name: CaballoArmy
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8188779346697298606, guid: d8368b1ea136aa2438474c7b953a25bd, type: 3}
+  cant: 4
+  id: 0
+  listHide: []
+  listArmy: []
