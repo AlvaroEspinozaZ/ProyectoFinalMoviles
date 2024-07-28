@@ -165,15 +165,17 @@ public class VisionSensorPrimitive : MonoBehaviour
                 Vector3 movement = direction * _warriorData.speed * Time.deltaTime;
                 transform.position += movement;
 
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, direction, out hit, distance, detectableLayers))
-                {
-                    isCurrentMove = false;
-                }
+                //RaycastHit hit;
+                //if (Physics.Raycast(transform.position, direction, out hit, distance, detectableLayers))
+                //{
+                //    isCurrentMove = false;
+                //    Debug.Log("JIJIIII");
+                //}
             }
             else
             {
                 isCurrentMove = false;
+                //Debug.Log("JOJOOOO");
             }
         }
         if (direction != Vector3.zero)

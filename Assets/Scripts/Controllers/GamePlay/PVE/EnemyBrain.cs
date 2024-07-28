@@ -53,14 +53,17 @@ public class EnemyBrain : MonoBehaviour
         }
         if(listaEnemysInScene.Count == 12)
         {
-            Debug.Log("Completo ");
             if (orderMove)
             {
                 Debug.Log("Moviendose ");
                 for (int i = 0; i < listaEnemysInScene.Count; i++)
                 {
-                    listaEnemysInScene[i].VisionSensor.SelectDestination(PosMovementArmyEnemy[0].position);
-                    Debug.Log("Moviendose a..."+ PosMovementArmyEnemy[0].position);
+
+                    Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
+                    Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+                    listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
+                    Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+                    
                 }
                 //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);
                 orderMove = false;
@@ -75,11 +78,12 @@ public class EnemyBrain : MonoBehaviour
             int posId = UnityEngine.Random.Range(0, PosSpamArmyEnemy.Length-1);
             listaSpamArmy[i].Instatiate(PosSpamArmyEnemy[posId].position);
             AgregarLista(listaSpamArmy[i]);
-            
             //listaEnemysInScene = listaSpamArmy[i].listaSpamArmy;
             cantArmy++;          
         }
         yield return new WaitForSecondsRealtime(1);
+        listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id);
+
         if (listaEnemysInScene.Count == 12)
             orderMove = true;
         isWorking = false;
@@ -121,7 +125,6 @@ public class EnemyBrain : MonoBehaviour
                     if (canCreated)
                     {
                         StartCoroutine(SpamEnemyCombo(numberCombo));
-                        Debug.Log("Entramos al 0");
                     }
                 }
                 break;
@@ -131,7 +134,6 @@ public class EnemyBrain : MonoBehaviour
                     if (canCreated)
                     {
                         StartCoroutine(SpamEnemyCombo(numberCombo));
-                        Debug.Log("Entramos al 1");
                     }
                 }
                 break;
@@ -139,21 +141,18 @@ public class EnemyBrain : MonoBehaviour
                 if (canCreated)
                 {
                     StartCoroutine(SpamEnemyCombo(numberCombo));
-                    Debug.Log("Entramos al 2");
                 }
                 break;
             case 3:
                 if (canCreated)
                 {
                     StartCoroutine(SpamEnemyCombo(numberCombo));
-                    Debug.Log("Entramos al 3");
                 }
                 break;
             case 4:
                 if (canCreated)
                 {
                     StartCoroutine(SpamEnemyCombo(numberCombo));
-                    Debug.Log("Entramos al 4");
                 }
                 break;
             case 5:
