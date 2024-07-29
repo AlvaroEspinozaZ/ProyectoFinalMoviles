@@ -18,7 +18,7 @@ public class EnemyBrain : MonoBehaviour
     public bool isPause = false;
     public bool isWorking = false;
     public bool canCreated = true;
-    private bool isOver = false;
+    public bool isOver = false;
     private bool orderMove = false;
     public HanldeEvent GameOver;
     private void Start()
@@ -46,44 +46,58 @@ public class EnemyBrain : MonoBehaviour
                 }
             }          
         }
-        if (King.isDeath&& isOver)
-        {
-            GameOver.CallEventGeneral();
-            isOver = false;
-        }
-        if(listaEnemysInScene.Count == 12)
-        {
-            if (orderMove)
+        if (King != null){
+            if (King.isDeath && !isOver)
             {
-                Debug.Log("Moviendose ");
-                for (int i = 0; i < listaEnemysInScene.Count; i++)
-                {
-
-                    Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
-                    Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
-                    listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
-                    Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
-                    
-                }
-                //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);
-                orderMove = false;
+                GameOver.CallEventGeneral();
+                isOver = true;
             }
         }
+    
+        //if(listaEnemysInScene.Count == 12)
+        //{
+        //    if (orderMove)
+        //    {
+        //        Debug.Log("Moviendose ");
+        //        for (int i = 0; i < listaEnemysInScene.Count; i++)
+        //        {
+
+        //            Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
+        //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+        //            listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
+        //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+                    
+        //        }
+        //        //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);
+        //        orderMove = false;
+        //    }
+        //}
     
     }
     IEnumerator SpamEnemyCombo(int i)
     {
         if (!isPause)
         {
-            int posId = UnityEngine.Random.Range(0, PosSpamArmyEnemy.Length-1);
-            listaSpamArmy[i].Instatiate(PosSpamArmyEnemy[posId].position);
-            AgregarLista(listaSpamArmy[i]);
+            int posId = UnityEngine.Random.Range(0, PosSpamArmyEnemy.Length);
+            //Debug.Log("posId: " + posId);
+            listaSpamArmy[i].Instatiate(PosSpamArmyEnemy[posId].position);           
+            //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id - 1);
             //listaEnemysInScene = listaSpamArmy[i].listaSpamArmy;
             cantArmy++;          
         }
-        yield return new WaitForSecondsRealtime(1);
-        listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id);
 
+        yield return new WaitForSecondsRealtime(1.5f);
+        if (!isPause)
+        {
+            AgregarLista(listaSpamArmy[i]);
+            listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id - 1);
+        }
+        //for(int id = 0; id< listaSpamArmy[i].listArmy.Count; id++)
+        //{
+        //    Debug.Log("Comprobandooooo"+listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove);
+        //    listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove = true;
+        //    Debug.Log("Comprobandooooo2222222222" + listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove);
+        //}
         if (listaEnemysInScene.Count == 12)
             orderMove = true;
         isWorking = false;
@@ -113,64 +127,73 @@ public class EnemyBrain : MonoBehaviour
         for(i = 0; i < army.listArmy.Count; i++)
         {
             listaEnemysInScene.Add(army.listArmy[i]);
+            army.listArmy[i].MyHealth.clearList += CLearSoldier;
+
         }
+    }
+    private void CLearSoldier(PrefabMovement soldierDied)
+    {
+        listaEnemysInScene.Remove(soldierDied);
     }
     void ChooseCombo(int numberCombo)
     {
-        switch (numberCombo)
+        if (!isPause)
         {
-            case 0:
-                if (isWorking)
-                {
+            switch (numberCombo)
+            {
+                case 0:
+                    if (isWorking)
+                    {
+                        if (canCreated)
+                        {
+                            StartCoroutine(SpamEnemyCombo(numberCombo));
+                        }
+                    }
+                    break;
+                case 1:
+                    if (isWorking)
+                    {
+                        if (canCreated)
+                        {
+                            StartCoroutine(SpamEnemyCombo(numberCombo));
+                        }
+                    }
+                    break;
+                case 2:
                     if (canCreated)
                     {
                         StartCoroutine(SpamEnemyCombo(numberCombo));
                     }
-                }
-                break;
-            case 1:
-                if (isWorking)
-                {
+                    break;
+                case 3:
                     if (canCreated)
                     {
                         StartCoroutine(SpamEnemyCombo(numberCombo));
                     }
-                }
-                break;
-            case 2:
-                if (canCreated)
-                {
-                    StartCoroutine(SpamEnemyCombo(numberCombo));
-                }
-                break;
-            case 3:
-                if (canCreated)
-                {
-                    StartCoroutine(SpamEnemyCombo(numberCombo));
-                }
-                break;
-            case 4:
-                if (canCreated)
-                {
-                    StartCoroutine(SpamEnemyCombo(numberCombo));
-                }
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
-                break;
+                    break;
+                case 4:
+                    if (canCreated)
+                    {
+                        StartCoroutine(SpamEnemyCombo(numberCombo));
+                    }
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+            }
         }
     }
     public void StopGame()
@@ -199,6 +222,7 @@ public class EnemyBrain : MonoBehaviour
     }
     void GameOverS()
     {
+        isOver = true;
         SceneGlobalManager.Instance.LoadScene(End);
     }
 }

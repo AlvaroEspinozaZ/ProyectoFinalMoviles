@@ -52,6 +52,8 @@ public class P_RangeM : PrefabMovement
             }
             if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp!=null)
             {
+                float distance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+                tmp.counterAttack?.Invoke(distance, tmp, myHealth);
                 if (bullet != null)
                 {
                     bullets[id].transform.position = transform.position;

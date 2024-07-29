@@ -10,6 +10,7 @@ public class PrefabMovement : MonoBehaviour
     protected WarriorData _warriorData;
     protected DOTController _dOTController;
     public VisionSensorPrimitive VisionSensor=> visionSensor;
+    public Health MyHealth => myHealth;
     public virtual void Start()
     {
         _rgb = GetComponent<Rigidbody>();
@@ -42,10 +43,15 @@ public class PrefabMovement : MonoBehaviour
                 float distance = Vector3.Distance(
                 new Vector3(transform.position.x, 0, transform.position.z),
                 new Vector3(visionSensor.objectCollision.transform.position.x, 0, visionSensor.objectCollision.transform.position.z));
-                if (visionSensor.isTower)
+                if (visionSensor.isTowerToAttack)
                 {
-                    //Attack(intervalAttack, visionSensor.currentEnemy);
-                    Debug.Log("Te vi");
+                    if (animator != null)
+                    {
+                        animator.SetBool("IsMove", false);
+                        animator.SetBool("IsAttak", true);
+                    }
+                    if (visionSensor.currentEnemy != null)
+                        Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
                 }
                 else if (distance <= _warriorData.distanceAttack)
                 {

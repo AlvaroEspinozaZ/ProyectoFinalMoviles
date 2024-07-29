@@ -13,8 +13,10 @@ public class VisionSensorPrimitive : MonoBehaviour
     public float visionRange = 6.0f;
     public float stopDistance = 1.3f;
     public float rotationSpeed = 5.0f;
-    public bool isTower = false;
     public int id;
+    [Header("Personaje Estructura")]
+    public bool isTower = false;
+    public bool isTowerToAttack = false;
     [Header("Personaje Seleccionado")]
     public GameObject _selection;
     public bool _isSelection=false;
@@ -25,7 +27,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public List<Health> _alieds;
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
-    private bool areEnemysNear = false;
+    public bool areEnemysNear = false;
     Vector3 destination;
     public Action<float, VisionSensorPrimitive,Health> counterAttack;
     
@@ -62,7 +64,15 @@ public class VisionSensorPrimitive : MonoBehaviour
             currentEnemy = null;
             isObjectDetected = false;
         }
-        if(areEnemysNear && objectCollision==null&& currentEnemy == null)
+        if (objectCollision == null || currentEnemy == null)
+        {
+            areEnemysNear = true;
+        }
+        else if (objectCollision != null && currentEnemy != null)
+        {
+            areEnemysNear = false;
+        }
+        if (areEnemysNear && objectCollision==null&& currentEnemy == null)
         {
             visionCollider.enabled = false;
             visionCollider.enabled = true;
@@ -82,6 +92,29 @@ public class VisionSensorPrimitive : MonoBehaviour
         }
    
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (((1 << collision.gameObject.layer) & detectableLayers) != 0)
+        {
+            if (collision.gameObject.GetComponent<VisionSensorPrimitive>() != null)
+            {
+                if (collision.gameObject.GetComponent<VisionSensorPrimitive>().isTower)
+                {
+                    isTowerToAttack = true;
+                }
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
+        if (((1 << collision.gameObject.layer) & detectableLayers) != 0)
+        {
+            
+            isTowerToAttack = false;              
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (!isObjectDetected && ((1 << other.gameObject.layer) & detectableLayers) != 0)
@@ -100,22 +133,9 @@ public class VisionSensorPrimitive : MonoBehaviour
                     visionCollider.enabled = false;
                 }
             }
+            
         }
         visionCollider.enabled = true;
-
-        if (((1 << other.gameObject.layer) & detectableLayers) != 0)
-        {
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if(((1 << other.gameObject.layer) & detectableLayers) != 0){
-            areEnemysNear = true;
-        }
-        else
-        {
-            areEnemysNear = false;
-        }
     }
 
     void OnTriggerExit(Collider other)
@@ -124,6 +144,7 @@ public class VisionSensorPrimitive : MonoBehaviour
         {
             isObjectDetected = false;
             objectCollision = null;
+             currentEnemy = null;
             areEnemysNear = false;
         }
     }
@@ -189,20 +210,24 @@ public class VisionSensorPrimitive : MonoBehaviour
     {        
         destination = position;
         isCurrentMove = true;
+        //Debug.Log("isCurrentMove-> " + isCurrentMove);
     }
 
     void CounterAttack(float distance, VisionSensorPrimitive tmp,Health myHealth)
-    {
+    {  
         if(tmp.currentEnemy!= myHealth)
         {
             float distance1 = Vector3.Distance(transform.position, tmp.currentEnemy.gameObject.transform.position);
-            float distance2 = Vector3.Distance(transform.position, tmp.gameObject.transform.position);
-            if (distance1 < distance2)
+            if (distance1 < distance)
             {                
-                Debug.Log("Se mantiene");
+                //Debug.Log("Se mantiene");
+                //Debug.Log("distance1 " + distance1);
+                //Debug.Log("distance1 " + distance);
             }
             else
             {
+                //Debug.Log("distance1 " + distance1);
+                //Debug.Log("distance1 " + distance);
                 tmp.objectCollision = gameObject;
                 tmp.currentEnemy = myHealth;
                 tmp.isObjectDetected = true;

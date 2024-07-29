@@ -82,16 +82,16 @@ public class SpamArmy : ScriptableObject
     private void CLearSoldier(PrefabMovement soldierDied)
     {
         listArmy.Remove(soldierDied);
-        Debug.Log(soldierDied);
-
     }
     public void MoveArmy(Vector3 posToMove,int id)
     {
-            for (int i = 0; i < listArmy.Count; i++)
+        //Debug.Log("Entramoooos");
+        for (int i = 0; i < listArmy.Count; i++)
             {
                 if(listArmy[i].VisionSensor.id == id)
                 {
                     listArmy[i].VisionSensor.SelectDestination(posToMove);
+                //Debug.Log("listArmy[i].VisionSensor.ismoving : " + listArmy[i].VisionSensor.isCurrentMove);
 
                 }
         }        
