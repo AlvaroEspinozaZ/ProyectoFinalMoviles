@@ -59,6 +59,13 @@ public class Health : MonoBehaviour
     {
         characterHealth -= damage;
         //Debug.Log("Actulizamos a "+ gameObject+" y le quitamos : "+ damage);
+        if (isDeath)
+        {
+            //Llamar evento de Muerte
+            clearList?.Invoke(gameObject.GetComponent<PrefabMovement>());
+            eventDead?.Invoke(_warriorData.timeToDeath);
+            //enemy.Died(timeToDeath);
+        }
     }
     public void CancelDied()
     {

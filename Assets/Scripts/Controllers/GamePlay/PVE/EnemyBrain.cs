@@ -14,7 +14,7 @@ public class EnemyBrain : MonoBehaviour
 
     [SerializeField] private SceneConfiguration End;
     public int cantArmy;
-    public int comboArmy= 4;
+    private int comboArmy= 4;
     public bool isPause = false;
     public bool isWorking = false;
     public bool canCreated = true;
@@ -53,7 +53,10 @@ public class EnemyBrain : MonoBehaviour
                 isOver = true;
             }
         }
-    
+        if (listaEnemysInScene.Count == 0)
+        {
+
+        }
         //if(listaEnemysInScene.Count == 12)
         //{
         //    if (orderMove)
@@ -62,27 +65,24 @@ public class EnemyBrain : MonoBehaviour
         //        for (int i = 0; i < listaEnemysInScene.Count; i++)
         //        {
 
-        //            Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
-        //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
-        //            listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
-        //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
-                    
-        //        }
-        //        //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);
-        //        orderMove = false;
-        //    }
-        //}
-    
+            //            Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
+            //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+            //            listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
+            //            Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+
+            //        }
+            //        //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);
+            //        orderMove = false;
+            //    }
+            //}
+
     }
     IEnumerator SpamEnemyCombo(int i)
     {
         if (!isPause)
         {
             int posId = UnityEngine.Random.Range(0, PosSpamArmyEnemy.Length);
-            //Debug.Log("posId: " + posId);
-            listaSpamArmy[i].Instatiate(PosSpamArmyEnemy[posId].position);           
-            //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id - 1);
-            //listaEnemysInScene = listaSpamArmy[i].listaSpamArmy;
+            listaSpamArmy[i].Instatiate(PosSpamArmyEnemy[posId].position);
             cantArmy++;          
         }
 
@@ -92,12 +92,6 @@ public class EnemyBrain : MonoBehaviour
             AgregarLista(listaSpamArmy[i]);
             listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id - 1);
         }
-        //for(int id = 0; id< listaSpamArmy[i].listArmy.Count; id++)
-        //{
-        //    Debug.Log("Comprobandooooo"+listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove);
-        //    listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove = true;
-        //    Debug.Log("Comprobandooooo2222222222" + listaSpamArmy[i].listArmy[id].VisionSensor.isCurrentMove);
-        //}
         if (listaEnemysInScene.Count == 12)
             orderMove = true;
         isWorking = false;
@@ -134,6 +128,7 @@ public class EnemyBrain : MonoBehaviour
     private void CLearSoldier(PrefabMovement soldierDied)
     {
         listaEnemysInScene.Remove(soldierDied);
+
     }
     void ChooseCombo(int numberCombo)
     {

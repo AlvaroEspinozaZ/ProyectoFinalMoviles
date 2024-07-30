@@ -93,10 +93,6 @@ public class P_RangeM : PrefabMovement
 
                     }
                 }
-                else if (visionSensor.currentEnemy)
-                {
-
-                }
                 else if (distance <= _warriorData.distanceAttack)
                 {
                     if (animator != null)
