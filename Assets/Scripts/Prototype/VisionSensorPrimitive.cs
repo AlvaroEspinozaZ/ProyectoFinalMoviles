@@ -28,7 +28,7 @@ public class VisionSensorPrimitive : MonoBehaviour
     public bool isObjectDetected = false;
     public bool isCurrentMove = false;
     public bool areEnemysNear = false;
-    Vector3 destination;
+    public Vector3 destination;
     public Action<float, VisionSensorPrimitive,Health> counterAttack;
     
     private void Start()

@@ -6,7 +6,12 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private Health enemy;
     [SerializeField] private int damage;
+    private Rigidbody rgb;
     public float timeToDeath = 1.1f;
+    private void Awake()
+    {
+        rgb = GetComponent<Rigidbody>();
+    }
     private void OnEnable()
     {
         StartCoroutine(Descativas());
@@ -15,6 +20,10 @@ public class BulletController : MonoBehaviour
     {
         this.enemy = enemy;
         this.damage = damage;
+    }
+    public void SetVelocity(Vector3 target, float intervalAttack)
+    {
+        rgb.velocity = target.normalized * intervalAttack;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,9 +45,11 @@ public class BulletController : MonoBehaviour
                     }
                 }
                 gameObject.SetActive(false);
+               
+                Debug.Log("gameObject.SetActive(false)" + gameObject);
             }
-
         }
+        
 
     }
     

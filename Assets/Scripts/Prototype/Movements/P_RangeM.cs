@@ -10,6 +10,7 @@ public class P_RangeM : PrefabMovement
     [SerializeField] BulletController[] bullets;
 
     int id;
+
     public override void Start()
     {
         base.Start();
@@ -53,10 +54,12 @@ public class P_RangeM : PrefabMovement
             if ((Time.time - timeToLastHit) % (timeToAttack + 1) >= timeToAttack && tmp!=null)
             {
                 float distance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+                Vector3 direction = (VisionSensor.objectCollision.transform.position - transform.position).normalized;
                 tmp.counterAttack?.Invoke(distance, tmp, myHealth);
                 if (bullet != null)
                 {
                     bullets[id].transform.position = transform.position;
+                    bullets[id].transform.rotation= Quaternion.LookRotation(direction);
                     bullets[id].gameObject.SetActive(true);
                     if (enemy.gameObject != null)
                     {
@@ -89,6 +92,10 @@ public class P_RangeM : PrefabMovement
                             Attack(_warriorData.intervalAttack, visionSensor.currentEnemy);
 
                     }
+                }
+                else if (visionSensor.currentEnemy)
+                {
+
                 }
                 else if (distance <= _warriorData.distanceAttack)
                 {

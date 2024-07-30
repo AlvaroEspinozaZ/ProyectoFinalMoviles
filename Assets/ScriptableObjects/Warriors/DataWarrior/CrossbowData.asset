@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrossbowData
   m_EditorClassIdentifier: 
   characterHealth: 90
-  distanceAttack: 12
+  distanceAttack: 35
   damage: 2
   intervalAttack: 0.2
   timeToDeath: 1.1
