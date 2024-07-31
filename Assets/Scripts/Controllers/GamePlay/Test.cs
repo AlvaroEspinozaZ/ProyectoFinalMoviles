@@ -45,6 +45,7 @@ public class Test : MonoBehaviour
     float left = 0;
     [Header("Camera******")]
     public float velocityCamera=12;
+    public bool ISCameraBlocked = false;
     [SerializeField] private Vector2 limitX;
     [SerializeField] private Vector2 limitZ;
     Vector3 currentPosition;
@@ -300,6 +301,7 @@ public class Test : MonoBehaviour
 
     private void MySwipe(Vector2 direction)
     {
+        if(ISCameraBlocked) return;
         float horizontal = direction.x;
         float vertical = direction.y;
         if(Mathf.Abs(horizontal)> Mathf.Abs(vertical))
@@ -322,13 +324,13 @@ public class Test : MonoBehaviour
             if (vertical >= 0.2f)
             {
                 Debug.Log("Up");
-                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
                 MoveCamera(0.01f, posfinal);
             }
             else if (vertical <= -0.2f)
             {
                 Debug.Log("Down");
-                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
                 MoveCamera(0.01f, posfinal);
 
             }
@@ -368,12 +370,12 @@ public class Test : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Up");
-                posfinal = new Vector3(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                posfinal = new Vector3(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
                 MoveCamera(0.01f, posfinal);
                 break;
             case 3:
                 Debug.Log("Down");
-                posfinal = new Vector3(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                posfinal = new Vector3(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
                 MoveCamera(0.01f, posfinal);
                 break;
             default:
@@ -407,5 +409,9 @@ public class Test : MonoBehaviour
     {
         totalZ+= Mathf.Clamp(totalX + (x*Time.deltaTime), limits.x, limits.y);
         return totalX;
+    }
+    public void SetCameraLocked()
+    {
+        ISCameraBlocked = !ISCameraBlocked;
     }
 }

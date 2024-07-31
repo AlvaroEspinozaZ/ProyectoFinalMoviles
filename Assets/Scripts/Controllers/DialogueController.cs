@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject Dialogue;
     public TMP_Text dialogueText;
+    public UnityEvent OnEndEvent;
     public string[] dialogues;
     private int dialogueIndex = 0;
     private bool isTyping = false;
@@ -40,7 +42,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-           Dialogue.SetActive(false);
+            OnEndEvent?.Invoke();
+            Dialogue.SetActive(false);
         }
     }
 
