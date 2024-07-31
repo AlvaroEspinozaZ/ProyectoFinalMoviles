@@ -1,48 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ScenesManager;
 public class GameController : MonoBehaviour
 {
-    public GameObject prefab;
-    Vector2 initPos;
-    public Vector3 worldInitPos;
-    public Vector3 worldTouchPos;
-    public Vector2 touchPos;
-    float directionX;
-    float directionY;
-
-    public float timer;
+    public float time = 2;
+    [SerializeField] private Health KingRed;
+    [SerializeField] private Health KingBlue;
+    public bool isOver = false;
+    public HanldeEvent GameOver;
+    [SerializeField] private SceneConfiguration End;
     void Update()
     {
-        WithTouch();
-    }
-    void WithTouch()
-    {       
-        if (Input.touchCount > 0)
+        if (KingRed != null)
         {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
+            if (KingRed.isDeath && !isOver)
             {
-                initPos = touch.position;
+                GameOver.CallEventFloat(time);
+                isOver = true;
             }
-            else if ( touch.phase == TouchPhase.Moved)
+        }
+        else if (KingBlue != null)
+        {
+            if (KingBlue.isDeath && !isOver)
             {
-                touchPos = touch.position;
-                worldInitPos = Camera.main.ScreenToWorldPoint(new Vector3(initPos.x, initPos.y, Camera.main.nearClipPlane));
-                worldTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, Camera.main.nearClipPlane));
-                timer += Time.deltaTime;
-                float directionX = worldTouchPos.x - worldInitPos.x;
-                float directionY = worldTouchPos.y - worldInitPos.y;
-                if (directionY > 0.15f && timer>0.35f)
-                {
-                    Vector3 spawnPos = new Vector3(worldTouchPos.x, worldTouchPos.y, prefab.transform.position.z);
-                    GameObject tmp = Instantiate(prefab, spawnPos, Quaternion.identity);
-                    timer = 0;
-                }
+                GameOver.CallEventFloat(time);
+                isOver = true;
             }
         }
     }
-
+    private void OnEnable()
+    {
+        GameOver.ActionFloat += GameOverS;
+    }
+    private void OnDisable()
+    {
+        GameOver.ActionFloat -= GameOverS;
+    }
+    void GameOverS(float time)
+    {
+        isOver = true;
+        StartCoroutine(GameOverTransition(time));
+    }
+    IEnumerator GameOverTransition(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        SceneGlobalManager.Instance.LoadScene(End);
+    }
 }

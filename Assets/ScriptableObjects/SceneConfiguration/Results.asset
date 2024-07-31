@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Results
   m_EditorClassIdentifier: 
   sceneName: Results
-  isAditive: 1
+  isAditive: 0
   isInactive: 0

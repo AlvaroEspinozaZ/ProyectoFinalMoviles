@@ -8,13 +8,22 @@ public class BulletController : MonoBehaviour
     [SerializeField] private int damage;
     private Rigidbody rgb;
     public float timeToDeath = 1.1f;
+    [SerializeField] private Health current;
     private void Awake()
     {
         rgb = GetComponent<Rigidbody>();
     }
+    private void Start()
+    {
+        current.eventDead += EliminatedBullet;
+    }
     private void OnEnable()
     {
         StartCoroutine(Descativas());
+    }
+    public void SetFather(Health my)
+    {
+        this.current = my;
     }
     public void SetEnemy(Health enemy, int damage)
     {
@@ -31,22 +40,24 @@ public class BulletController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Health>() == enemy)
             {
-                //Llamar evento de RecivirDaño
-                enemy.eventTakeDamage?.Invoke(damage);
-                enemy.eventTakeDamageUI?.Invoke();
-                if (enemy.isDeath)
+                if (!current.isDeath)
                 {
-                    if (enemy.gameObject != null)
+                    //Llamar evento de RecivirDaño
+                    enemy.eventTakeDamage?.Invoke(damage);
+                    enemy.eventTakeDamageUI?.Invoke();
+                    if (enemy.isDeath)
                     {
-                        PrefabMovement prefabMovement = enemy.GetComponent<PrefabMovement>();
-                        //Llamar evento de Muerte
-                        enemy.clearList?.Invoke(prefabMovement);
-                        enemy.eventDead?.Invoke(timeToDeath);
+                        if (enemy.gameObject != null)
+                        {
+                            PrefabMovement prefabMovement = enemy.GetComponent<PrefabMovement>();
+                            //Llamar evento de Muerte
+                            enemy.clearList?.Invoke(prefabMovement);
+                            enemy.eventDead?.Invoke(timeToDeath);
+                        }
                     }
-                }
+                }                
                 gameObject.SetActive(false);
                
-                Debug.Log("gameObject.SetActive(false)" + gameObject);
             }
         }
         
@@ -57,5 +68,9 @@ public class BulletController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2f);
         gameObject.SetActive(false);
+    }
+    void EliminatedBullet(float time)
+    {
+        Destroy(gameObject,time);
     }
 }

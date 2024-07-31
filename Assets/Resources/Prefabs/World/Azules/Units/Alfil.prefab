@@ -91,7 +91,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &3989147484189354995
 CapsuleCollider:
@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionCollider: {fileID: 4927245682899286131}
-  pos: {fileID: 1359794320458613577}
   detectableLayers:
     serializedVersion: 2
     m_Bits: 320
@@ -172,15 +171,19 @@ MonoBehaviour:
   visionRange: 6
   stopDistance: 1.3
   rotationSpeed: 5
-  isTower: 0
   id: 0
-  _selection: {fileID: 0}
+  isTower: 0
+  isTowerToAttack: 0
+  _selection: {fileID: 8056850610214678695}
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
-  currentAlied: []
+  currentAlied: {fileID: 0}
+  _alieds: []
   isObjectDetected: 0
   isCurrentMove: 0
+  areEnemysNear: 0
+  destination: {x: 0, y: 0, z: 0}
 --- !u!114 &3034426279363188128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,5 +1023,10 @@ MonoBehaviour:
 --- !u!224 &5626696485154783928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5041755500632475095, guid: 97fb719f4db69b64184e64b5ae9195b5, type: 3}
+  m_PrefabInstance: {fileID: 856215328643155823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8056850610214678695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7218792737422260168, guid: 97fb719f4db69b64184e64b5ae9195b5, type: 3}
   m_PrefabInstance: {fileID: 856215328643155823}
   m_PrefabAsset: {fileID: 0}

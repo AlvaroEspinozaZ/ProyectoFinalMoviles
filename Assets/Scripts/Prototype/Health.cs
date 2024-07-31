@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     public Action eventTakeDamageUI;
     public Action<float> eventDead;
     public Action<PrefabMovement> clearList;
+    public Action<Health> clearListHealth;
     private void Awake()
     {
         _warriorData = _general;
@@ -63,6 +64,7 @@ public class Health : MonoBehaviour
         {
             //Llamar evento de Muerte
             clearList?.Invoke(gameObject.GetComponent<PrefabMovement>());
+            clearListHealth?.Invoke(this);
             eventDead?.Invoke(_warriorData.timeToDeath);
             //enemy.Died(timeToDeath);
         }
