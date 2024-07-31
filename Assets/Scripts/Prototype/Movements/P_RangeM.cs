@@ -60,15 +60,18 @@ public class P_RangeM : PrefabMovement
                     tmp.counterAttack?.Invoke(distance, tmp, myHealth);
                     if (bullet != null)
                     {
-                        bullets[id].SetFather(gameObject.GetComponent<Health>());
-                        bullets[id].transform.position = transform.position;
-                        bullets[id].transform.rotation = Quaternion.LookRotation(direction);
-                        bullets[id].gameObject.SetActive(true);
-                        if (enemy.gameObject != null)
+                        if (bullets[id] != null)
                         {
-                            bullets[id].SetEnemy(enemy, _warriorData.damage);
-                            bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, _warriorData.intervalAttack).SetEase(easeDOT);
-                        }
+                            bullets[id].SetFather(gameObject.GetComponent<Health>());
+                            bullets[id].transform.position = transform.position;
+                            bullets[id].transform.rotation = Quaternion.LookRotation(direction);
+                            bullets[id].gameObject.SetActive(true);
+                            if (enemy.gameObject != null)
+                            {
+                                bullets[id].SetEnemy(enemy, _warriorData.damage);
+                                bullets[id].gameObject.transform.DOMove(enemy.gameObject.transform.position, _warriorData.intervalAttack).SetEase(easeDOT);
+                            }
+                        }                        
                     }
                 }                
                 id = (id + 1) % 5;

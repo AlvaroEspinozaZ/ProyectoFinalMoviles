@@ -62,14 +62,14 @@ public class EnemyBrain : MonoBehaviour
             {
                 if (orderMove)
                 {
-                    Debug.Log("Moviendose ");
+                    //Debug.Log("Moviendose ");
                     for (int i = 0; i < listaEnemysInScene.Count; i++)
                     {
 
-                        Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
-                        Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+                        //Debug.Log("Moviendose a..." + PosMovementArmyEnemy[0].position);
+                        //Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
                         listaEnemysInScene[i].VisionSensor.isCurrentMove = true;
-                        Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
+                        //Debug.Log("isCurrentMove" + listaEnemysInScene[i].VisionSensor.isCurrentMove);
 
                     }
                     //listaSpamArmy[i].MoveArmy(PosMovementArmyEnemy[0].position, listaSpamArmy[i].id-1);

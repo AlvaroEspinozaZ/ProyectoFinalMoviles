@@ -462,7 +462,7 @@ MonoBehaviour:
   id: 0
   isTower: 0
   isTowerToAttack: 0
-  _selection: {fileID: 0}
+  _selection: {fileID: 2840456882528110521}
   _isSelection: 0
   objectCollision: {fileID: 0}
   currentEnemy: {fileID: 0}
@@ -977,6 +977,11 @@ PrefabInstance:
 --- !u!224 &482712169307043238 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5041755500632475095, guid: 97fb719f4db69b64184e64b5ae9195b5, type: 3}
+  m_PrefabInstance: {fileID: 4847308900583600241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2840456882528110521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7218792737422260168, guid: 97fb719f4db69b64184e64b5ae9195b5, type: 3}
   m_PrefabInstance: {fileID: 4847308900583600241}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7135966593919300511 stripped

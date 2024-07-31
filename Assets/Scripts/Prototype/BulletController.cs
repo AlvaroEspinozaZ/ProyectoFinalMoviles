@@ -71,6 +71,6 @@ public class BulletController : MonoBehaviour
     }
     void EliminatedBullet(float time)
     {
-        Destroy(gameObject,time);
+        Destroy(gameObject,time+1);
     }
 }

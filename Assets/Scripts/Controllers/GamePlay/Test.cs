@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using System.Threading.Tasks;
@@ -17,11 +18,14 @@ public class Test : MonoBehaviour
     private float minTimePress = 0.15f;
     //swipe
     private float swipeLoopTime = 2f;
-    private float swipeMinDistance = 0.65f;
+    private float swipeMinDistance = 0.45f;
     bool isTapped = true;
     bool isPress = false;
     bool isHolding = false;
     private int countHolding = 0;
+    public Button[] btns;
+    public int btnNumber;
+    public bool movingCamera=false;
     //double tap
     bool isDoubleTap = false;
     private float doubleTapTime = 0.3f; 
@@ -40,10 +44,15 @@ public class Test : MonoBehaviour
     float right = 0;
     float left = 0;
     [Header("Camera******")]
+    public float velocityCamera=12;
+    [SerializeField] private Vector2 limitX;
+    [SerializeField] private Vector2 limitZ;
     Vector3 currentPosition;
     [SerializeField] Camera mainCamera;
     Vector2 positionCamera;
     Vector2 currentpositionCamera;
+    float totalX = 2.1f;
+    float totalZ = 24.1f;
     [SerializeField] Ease easeDOT;
     [SerializeField] float delay;
     [SerializeField] Vector3 posfinal;
@@ -51,6 +60,15 @@ public class Test : MonoBehaviour
     private void Start()
     {
         flag.SetActive(false);
+        for (int i = 0; i < btns.Length; i++)
+        {
+            int id = i;
+            btns[i].onClick.AddListener(() => DetectedBtn(id));
+        }
+    }
+    public void OnPressGetID(int id)
+    { 
+
     }
     private void Update()
     {
@@ -80,22 +98,40 @@ public class Test : MonoBehaviour
         }
         if (mainCamera != null)
         {
-            if (isPress == true && isHolding)
-            {
-                if (countHolding == 0)
-                {
-                    positionCamera = currentpositionCamera;
-                }
-                swipeTimer = 0f;
-                float distance = Vector2.Distance(currentpositionCamera, positionCamera);
-                Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
-                if (distance >= swipeMinDistance)
-                {
-                    MySwipe(direction);
-                    swipeTimer = swipeLoopTime;
-                }
+            //if (isPress == true && isHolding)
+            //{
+            //    if (countHolding == 0)
+            //    {
+            //        positionCamera = currentpositionCamera;
+            //    }
+            //    swipeTimer = 0f;
+            //    float distance = Vector2.Distance(currentpositionCamera, positionCamera);
+            //    Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
+            //    Debug.Log("qqqqq" );
+            //    if (distance >= swipeMinDistance)
+            //    {
+            //        //MySwipe(direction);
+            //        if (movingCamera)
+            //        {
+            //            totalZ += Mathf.Clamp(totalX + (velocityCamera * Time.deltaTime), limitX.x, limitX.y);
+            //            posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, totalZ);
+            //            Debug.Log("posfinal " + posfinal);
+            //            MoveCamera(0.01f, posfinal);
+            //        }
+            //        swipeTimer = swipeLoopTime;
+            //    }
               
-                countHolding++;
+            //    countHolding++;
+            //}
+            if (isPress == true)
+            {
+                //if (movingCamera)
+                //{
+                    float distance = Vector2.Distance(currentpositionCamera, positionCamera);
+                    Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
+                    //MoveCameraPosition();
+                    MySwipe(direction);
+                //}
             }
         }
 
@@ -153,6 +189,11 @@ public class Test : MonoBehaviour
                 {
                     canCreated = true;
                     couldCreated = false;
+                }    
+                movingCamera = false;
+                for (int i = 0; i < btns.Length; i++)
+                {
+                    btns[i].interactable = true;
                 }
                 break;
         }
@@ -265,37 +306,83 @@ public class Test : MonoBehaviour
         {
             if (horizontal >= 0.2f)
             {
-                //Debug.Log("Right");
-                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 27);
-                MoveCamera(delay, posfinal);
+                Debug.Log("Right");           
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, Mathf.Clamp(mainCamera.transform.position.z + (velocityCamera * Time.deltaTime), limitX.x, limitX.y));
+                MoveCamera(0.01f, posfinal);
             }
             else if (horizontal <= -0.2f)
             {
-                //Debug.Log("Left");    
-                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -27);
-                MoveCamera(delay, posfinal);
+                Debug.Log("Left");
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, Mathf.Clamp(mainCamera.transform.position.z - (velocityCamera * Time.deltaTime), limitX.x, limitX.y));
+                MoveCamera(0.01f, posfinal);
             }
         }
         else if(Mathf.Abs(vertical) > Mathf.Abs(horizontal))
         {
             if (vertical >= 0.2f)
             {
-                //Debug.Log("Up");
-                //posfinal = new Vector3(28, mainCamera.transform.position.y, mainCamera.transform.position.z);
-                //MoveCamera(delay, posfinal);
+                Debug.Log("Up");
+                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                MoveCamera(0.01f, posfinal);
             }
             else if (vertical <= -0.2f)
             {
-                //Debug.Log("Down");
-                //posfinal = new Vector3(-28, mainCamera.transform.position.y, mainCamera.transform.position.z);
-                //MoveCamera(delay, posfinal);
-      
+                Debug.Log("Down");
+                posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                MoveCamera(0.01f, posfinal);
+
             }
         }
     }
-
+    private void DetectedBtn(int id)
+    {
+        Debug.Log("Entramos btn");
+        btnNumber = id;
+        SetCurrentBtn(id);
+        movingCamera = true;
+    }
+    void SetCurrentBtn(int id)
+    {
+        for (int i = 0; i < btns.Length; i++)
+        {
+            if (i != id)
+            {
+                btns[i].interactable=false;
+            }
+        }
+        
+    }
+    void MoveCameraPosition()
+    {
+        switch (btnNumber)
+        {
+            case 0:
+                Debug.Log("Right");
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z + (velocityCamera*Time.deltaTime));
+                MoveCamera(0.01f, posfinal);
+                break;
+            case 1:
+                Debug.Log("Left");
+                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - (velocityCamera * Time.deltaTime));
+                MoveCamera(0.01f, posfinal);
+                break;
+            case 2:
+                Debug.Log("Up");
+                posfinal = new Vector3(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                MoveCamera(0.01f, posfinal);
+                break;
+            case 3:
+                Debug.Log("Down");
+                posfinal = new Vector3(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
+                MoveCamera(0.01f, posfinal);
+                break;
+            default:
+                break;
+        }
+    }
     public void MoveCamera(float time, Vector3 posfinal)
     {
+        Debug.Log("MoveCamera");
         mainCamera.transform.DOMove(posfinal, time).SetEase(easeDOT);
     }
     public void SetWarriorPrefab(StrategySO current)
@@ -309,5 +396,16 @@ public class Test : MonoBehaviour
         warriorSO = current;
         MoveCamera(0, mainCamera.transform.position);
         canCreated = false;
+    }
+    public float CurrentPostX(Vector2 limits,float x)
+        {            
+            totalX  += Mathf.Clamp(totalX + (x * Time.deltaTime), limits.x, limits.y);
+            return totalX;
+        }
+
+    public float CurrentPostZ(Vector2 limits, float x)
+    {
+        totalZ+= Mathf.Clamp(totalX + (x*Time.deltaTime), limits.x, limits.y);
+        return totalX;
     }
 }
