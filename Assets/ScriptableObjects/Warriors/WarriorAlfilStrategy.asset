@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WarriorAlfilStrategy
   m_EditorClassIdentifier: 
   prefabBase: {fileID: 11400000, guid: 1e6060cd52cab8e429f94f8f79993417, type: 2}
-  profilePicture: {fileID: 21300000, guid: d7232b9bd02e5254189e42f855242481, type: 3}
+  profilePicture: {fileID: -1685003064, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   costSpawn: 0
-  maxSpawn: 0
+  maxSpawn: 4
   rechargeTime: 3

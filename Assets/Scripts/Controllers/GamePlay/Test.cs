@@ -37,12 +37,10 @@ public class Test : MonoBehaviour
     [SerializeField] bool couldCreated=false;
     [SerializeField] bool canCreated = false;
     [SerializeField] bool isMovingArmy = false;
-    [SerializeField] GameObject flag ;
+    [SerializeField] bool isTouchingUnit = false;
     [Header("FeedBack")]
-
+    [SerializeField] GameObject flag;
     public int id;
-    float right = 0;
-    float left = 0;
     [Header("Camera******")]
     public float velocityCamera=12;
     public bool ISCameraBlocked = false;
@@ -52,12 +50,8 @@ public class Test : MonoBehaviour
     [SerializeField] Camera mainCamera;
     Vector2 positionCamera;
     Vector2 currentpositionCamera;
-    float totalX = 2.1f;
-    float totalZ = 24.1f;
     [SerializeField] Ease easeDOT;
-    [SerializeField] float delay;
     [SerializeField] Vector3 posfinal;
-    [SerializeField] Transform target;
     private void Start()
     {
         flag.SetActive(false);
@@ -66,10 +60,6 @@ public class Test : MonoBehaviour
             int id = i;
             btns[i].onClick.AddListener(() => DetectedBtn(id));
         }
-    }
-    public void OnPressGetID(int id)
-    { 
-
     }
     private void Update()
     {
@@ -98,41 +88,11 @@ public class Test : MonoBehaviour
             countHolding = 0;
         }
         if (mainCamera != null)
-        {
-            //if (isPress == true && isHolding)
-            //{
-            //    if (countHolding == 0)
-            //    {
-            //        positionCamera = currentpositionCamera;
-            //    }
-            //    swipeTimer = 0f;
-            //    float distance = Vector2.Distance(currentpositionCamera, positionCamera);
-            //    Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
-            //    Debug.Log("qqqqq" );
-            //    if (distance >= swipeMinDistance)
-            //    {
-            //        //MySwipe(direction);
-            //        if (movingCamera)
-            //        {
-            //            totalZ += Mathf.Clamp(totalX + (velocityCamera * Time.deltaTime), limitX.x, limitX.y);
-            //            posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, totalZ);
-            //            Debug.Log("posfinal " + posfinal);
-            //            MoveCamera(0.01f, posfinal);
-            //        }
-            //        swipeTimer = swipeLoopTime;
-            //    }
-              
-            //    countHolding++;
-            //}
+        {            
             if (isPress == true)
             {
-                //if (movingCamera)
-                //{
-                    float distance = Vector2.Distance(currentpositionCamera, positionCamera);
                     Vector2 direction = new Vector2(currentpositionCamera.x - positionCamera.x, currentpositionCamera.y - positionCamera.y);
-                    //MoveCameraPosition();
                     MySwipe(direction);
-                //}
             }
         }
 
@@ -156,6 +116,7 @@ public class Test : MonoBehaviour
                 Debug.Log("Disabled");
                 break;
             case InputActionPhase.Started:
+                flag.SetActive(false);
                 //Debug.Log("Started");              
                 isPress = true;
                 if (Time.time - lastTapTime < doubleTapTime)
@@ -233,52 +194,63 @@ public class Test : MonoBehaviour
                   
                     break;       
                 case 6:
-                    currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
-                    warriorSO = hit.transform.gameObject.GetComponent<Health>()._warriorData._strategy;
-                    warriorSO.GetCharacter().ActiveSelectionArmy(currentObject._selection, currentObject.id);     
-                    if (currentObject._selection)
-                        isMovingArmy = true;
-                    else isMovingArmy = false;
-                    break;
-                case 11:
-                    if (!canCreated)
+                    isTouchingUnit = true;
+                    if (isTouchingUnit)
                     {
-                        if (currentObject != null)
-                        {
-                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
-                            if (isMovingArmy)
-                            {
-                                flag.transform.position = hit.point;
+                        currentObject = hit.transform.gameObject.GetComponent<VisionSensorPrimitive>();
+                        warriorSO = hit.transform.gameObject.GetComponent<Health>()._warriorData._strategy;
+                        warriorSO.GetCharacter().ActiveSelectionArmy(currentObject._selection, currentObject.id);
+                        //if (currentObject._selection)
+                            isMovingArmy = true;
 
-                                flag.SetActive(true);
-                            }
-                        }
                     }
+                    else {
+                        flag.SetActive(false);
+                         isMovingArmy = false; 
+                    }
+
+
+                        break;
+                case 11:
+                    isTouchingUnit = false;
+                    if (currentObject != null)
+                        {
+                            if (isMovingArmy)
+                            {
+                                warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
+                                flag.transform.position = hit.point;
+                                flag.SetActive(true);
+                            }
+                        isMovingArmy = false;
+                        }
+                    
                     break;
-                case 12: // Floor            
+                case 12: // Floor
+                    isTouchingUnit = false;
+
                     if (!canCreated)
                     {
                         if (currentObject != null)
                         {
-                            warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
                             if (isMovingArmy)
                             {
+                                warriorSO.GetCharacter().MoveArmy(hit.point, currentObject.id);
                                 flag.transform.position = hit.point;
-
                                 flag.SetActive(true);
                             }
+                            isMovingArmy = false;
                         }
                     }
                     else
                     {
                         if (warriorSO.maxSpawn > 0)
-                        {                           
+                        {
                             warriorSO.Instantiate(new Vector3(hit.point.x, hit.point.y + 2, hit.point.z));
                             warriorSO.maxSpawn--;
                         }
                         flag.SetActive(false);
                         canCreated = false;
-            
+
                     }
                     break;
                 default:
@@ -332,13 +304,11 @@ public class Test : MonoBehaviour
                 Debug.Log("Down");
                 posfinal = new Vector3(Mathf.Clamp(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), limitZ.x, limitZ.y), mainCamera.transform.position.y, mainCamera.transform.position.z);
                 MoveCamera(0.01f, posfinal);
-
             }
         }
     }
     private void DetectedBtn(int id)
     {
-        Debug.Log("Entramos btn");
         btnNumber = id;
         SetCurrentBtn(id);
         movingCamera = true;
@@ -351,47 +321,16 @@ public class Test : MonoBehaviour
             {
                 btns[i].interactable=false;
             }
-        }
-        
-    }
-    void MoveCameraPosition()
-    {
-        switch (btnNumber)
-        {
-            case 0:
-                Debug.Log("Right");
-                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z + (velocityCamera*Time.deltaTime));
-                MoveCamera(0.01f, posfinal);
-                break;
-            case 1:
-                Debug.Log("Left");
-                posfinal = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - (velocityCamera * Time.deltaTime));
-                MoveCamera(0.01f, posfinal);
-                break;
-            case 2:
-                Debug.Log("Up");
-                posfinal = new Vector3(mainCamera.transform.position.x - (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
-                MoveCamera(0.01f, posfinal);
-                break;
-            case 3:
-                Debug.Log("Down");
-                posfinal = new Vector3(mainCamera.transform.position.x + (velocityCamera * Time.deltaTime), mainCamera.transform.position.y, mainCamera.transform.position.z);
-                MoveCamera(0.01f, posfinal);
-                break;
-            default:
-                break;
-        }
-    }
+        }        
+    }    
     public void MoveCamera(float time, Vector3 posfinal)
     {
-        Debug.Log("MoveCamera");
         mainCamera.transform.DOMove(posfinal, time).SetEase(easeDOT);
     }
     public void SetWarriorPrefab(StrategySO current)
     {
         warriorSO = current;
         couldCreated = true;
-        canCreated = false;
     }
     public void resetAll(StrategySO current)
     {
@@ -399,17 +338,7 @@ public class Test : MonoBehaviour
         MoveCamera(0, mainCamera.transform.position);
         canCreated = false;
     }
-    public float CurrentPostX(Vector2 limits,float x)
-        {            
-            totalX  += Mathf.Clamp(totalX + (x * Time.deltaTime), limits.x, limits.y);
-            return totalX;
-        }
 
-    public float CurrentPostZ(Vector2 limits, float x)
-    {
-        totalZ+= Mathf.Clamp(totalX + (x*Time.deltaTime), limits.x, limits.y);
-        return totalX;
-    }
     public void SetCameraLocked()
     {
         ISCameraBlocked = !ISCameraBlocked;

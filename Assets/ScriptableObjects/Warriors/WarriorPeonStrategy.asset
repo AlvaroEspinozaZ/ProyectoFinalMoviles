@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WarriorPeonStrategy
   m_EditorClassIdentifier: 
   prefabBase: {fileID: 11400000, guid: b98858a18a7aaf842bfae41301971e6f, type: 2}
-  profilePicture: {fileID: 21300000, guid: 9560437cd2bdf64429fc8db41ef31a19, type: 3}
+  profilePicture: {fileID: -258969901, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   costSpawn: 0
-  maxSpawn: 3
+  maxSpawn: 4
   rechargeTime: 0

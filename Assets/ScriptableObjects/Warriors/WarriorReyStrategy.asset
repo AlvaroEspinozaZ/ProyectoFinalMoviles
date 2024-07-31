@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WarriorReyStrategy
   m_EditorClassIdentifier: 
   prefabBase: {fileID: 11400000, guid: a4893db52a6c7614da03807476d95699, type: 2}
-  profilePicture: {fileID: 21300000, guid: 1de364abacff37f4eb6b3103f44b66b0, type: 3}
+  profilePicture: {fileID: 1531539144, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   costSpawn: 0
-  maxSpawn: 3
+  maxSpawn: 4
   rechargeTime: 0

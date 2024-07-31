@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 2304782802469658654}
   - component: {fileID: 1231800042543870938}
   m_Layer: 0
-  m_Name: flecha-ballesta-a 1
+  m_Name: flechaRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

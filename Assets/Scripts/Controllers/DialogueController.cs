@@ -3,9 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using UnityEngine.Events;
-
+using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private PlayerInput playerInput;
+    private InputAction touchAction;
     public GameObject Dialogue;
     public TMP_Text dialogueText;
     public UnityEvent OnEndEvent;
@@ -13,37 +15,49 @@ public class DialogueManager : MonoBehaviour
     private int dialogueIndex = 0;
     private bool isTyping = false;
     private bool skipToFull = false;
-
+    private void Awake()
+    {
+        touchAction = playerInput.actions["Touch"];
+        // Suscríbete a los eventos
+        touchAction.performed += OnTouchPerformed;
+        touchAction.canceled += OnTouchCanceled;
+        touchAction.Enable();
+    }
     private void Start()
     {
         ShowDialogue();
     }
 
-    private void Update()
+    public void OnTouchPerformed(InputAction.CallbackContext context)
     {
-        if (Input.GetMouseButtonDown(0))
+       
+                if (isTyping)
+                {
+                    skipToFull = true;
+                }
+                else
+                {
+                    NextDialogue();
+                }            
+    }
+    void OnTouchCanceled(InputAction.CallbackContext context)
+    {
+        if (dialogueIndex > dialogues.Length)
         {
-            if (isTyping)
-            {
-                skipToFull = true;
-            }
-            else
-            {
-                NextDialogue();
-            }
+            OnEndEvent?.Invoke();
+            Dialogue.SetActive(false);
         }
     }
-
+    private void OnDisable()
+    {
+        touchAction.performed -= OnTouchPerformed;
+        touchAction.canceled -= OnTouchCanceled;
+    }
     void ShowDialogue()
     {
         if (dialogueIndex < dialogues.Length)
         {
             StartCoroutine(TypeSentence(dialogues[dialogueIndex]));
-        }
-        else
-        {
-            OnEndEvent?.Invoke();
-            Dialogue.SetActive(false);
         }
     }
 

@@ -38,4 +38,5 @@ public abstract class StrategySO : ScriptableObject
     {
         return rechargeTime;
     }
+
 }

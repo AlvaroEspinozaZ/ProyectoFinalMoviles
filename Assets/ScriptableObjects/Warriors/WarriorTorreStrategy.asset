@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WarriorTorreStrategy
   m_EditorClassIdentifier: 
   prefabBase: {fileID: 11400000, guid: eccffcb5a9aec204b8ccce019a11bb43, type: 2}
-  profilePicture: {fileID: 21300000, guid: cf27b718fd68e9a48acebb468fd067e6, type: 3}
+  profilePicture: {fileID: 1985931650, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   costSpawn: 0
-  maxSpawn: 3
+  maxSpawn: 4
   rechargeTime: 0

@@ -466,7 +466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f8c822476bb16f4498594fb4ddcbefc, type: 3}
+  m_Sprite: {fileID: 1022840588, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf27b718fd68e9a48acebb468fd067e6, type: 3}
+  m_Sprite: {fileID: 1985931650, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9560437cd2bdf64429fc8db41ef31a19, type: 3}
+  m_Sprite: {fileID: -258969901, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2110,10 +2110,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1419755711}
   - {fileID: 1949734223}
   - {fileID: 390796399}
   - {fileID: 1907909308}
-  - {fileID: 1419755711}
   - {fileID: 239939379}
   m_Father: {fileID: 4095650348275165299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1de364abacff37f4eb6b3103f44b66b0, type: 3}
+  m_Sprite: {fileID: 1531539144, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7232b9bd02e5254189e42f855242481, type: 3}
+  m_Sprite: {fileID: -1685003064, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3240,8 +3240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00002861023, y: 206}
-  m_SizeDelta: {x: 1299.5735, y: 766.3486}
+  m_AnchoredPosition: {x: 0.00002861023, y: 149.87}
+  m_SizeDelta: {x: 1299.5735, y: 724.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419755712
 MonoBehaviour:
@@ -4233,7 +4233,7 @@ MonoBehaviour:
         m_MethodName: LoadScene
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 48565ddda346eb34481a3b091cc0aca3, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: e001fce59b829fa4f98a0d1499301426, type: 2}
           m_ObjectArgumentAssemblyTypeName: ScenesManager.SceneConfiguration, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4393,7 +4393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 761d42d253cabea408deccfd02008393, type: 3}
+  m_Sprite: {fileID: -968314540, guid: 26bfae0ecf82e5c4ba6846f10e026e48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

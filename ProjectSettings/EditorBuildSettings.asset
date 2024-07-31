@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Results.unity
     guid: b13826dcc72ea1f40ac4813dd48852b4
+  - enabled: 1
+    path: Assets/Scenes/PVE/TutorialEscene.unity
+    guid: 3a25fa689e2c175418f2debf6a682c37
   - enabled: 0
     path: Assets/Scenes/AdditiveScene.unity
     guid: e81801ad21b274a429d5b0e72b5f0105
