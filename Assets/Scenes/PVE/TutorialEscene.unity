@@ -665,6 +665,7 @@ MonoBehaviour:
   couldCreated: 0
   canCreated: 0
   isMovingArmy: 0
+  isTouchingUnit: 0
   flag: {fileID: 339102936}
   id: 0
   velocityCamera: 20
@@ -7167,7 +7168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       propertyPath: dialogues.Array.data[0]
-      value: Toca aqui para moverte hacia atras
+      value: Toca aqui para moverte hacia adelante
       objectReference: {fileID: 0}
     - target: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       propertyPath: dialogues.Array.data[1]
