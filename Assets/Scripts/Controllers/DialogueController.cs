@@ -30,15 +30,15 @@ public class DialogueManager : MonoBehaviour
 
     public void OnTouchPerformed(InputAction.CallbackContext context)
     {
-       
-                if (isTyping)
-                {
-                    skipToFull = true;
-                }
-                else
-                {
-                    NextDialogue();
-                }            
+
+        if (isTyping)
+        {
+            skipToFull = true;
+        }
+        else
+        {
+            NextDialogue();
+        }
     }
     void OnTouchCanceled(InputAction.CallbackContext context)
     {
@@ -81,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         isTyping = false;
     }
 
-    void NextDialogue()
+    public void NextDialogue()
     {
         dialogueIndex++;
         ShowDialogue();

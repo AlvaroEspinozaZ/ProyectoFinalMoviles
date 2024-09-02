@@ -163,6 +163,7 @@ public class Test : MonoBehaviour
 
     public void OnPosition(InputAction.CallbackContext context)
     {
+        Debug.Log("toque");
         currentPosition = Touchscreen.current.primaryTouch.position.ReadValue();
 
         Vector2 currentP = currentPosition;
@@ -171,7 +172,13 @@ public class Test : MonoBehaviour
         if(mainCamera!=null)
             currentpositionCamera = mainCamera.ViewportToScreenPoint( centeredPosition/1000000);
     }
-
+    public void OnMoveCamera(InputAction.CallbackContext context)
+    {
+        Debug.Log("entro");
+        Vector2 controler = context.ReadValue<Vector2>();
+        Debug.Log("X: " + controler.x +", Y: "+ controler.y);
+        MySwipe(controler);
+    }
     private void MyTap()
     {
         Ray ray = mainCamera.ScreenPointToRay(currentPosition);

@@ -427,7 +427,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 778827940}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991458966}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1 &46059137
 GameObject:
@@ -603,18 +606,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 110162320}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
     m_ActionName: Game/Touch[/Device Simulator Touchscreen/press]
   - m_PersistentCalls:
@@ -633,6 +624,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
     m_ActionName: Game/Position[/Device Simulator Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 110162322}
+        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+        m_MethodName: OnMoveCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -1451,7 +1470,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565949579}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1001 &246101858
 PrefabInstance:
@@ -1677,6 +1699,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2710203404384303901, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 1243296726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &286115036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286115034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 286115037}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &286115037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 1243296726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286115034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &302801467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,6 +2395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1249271098}
     m_Modifications:
+    - target: {fileID: 5535185358848848510, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5577474380644293037, guid: d84722ba6ebf02143b97c214075c5d42, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.6
@@ -3122,6 +3225,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2710203404384303901, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 1683303105}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &469389202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469389197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 469389203}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &469389203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 1683303105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469389197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &490472073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8519106887392178691, guid: 7bdacb6071d112f4d9c4886164b71775, type: 3}
@@ -3202,6 +3382,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 718942353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &548552109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548552108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 548552110}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &548552110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 718942353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548552108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &548744031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4609,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 816513972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &701262027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701262026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 701262028}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &701262028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 816513972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701262026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &718942353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4550,7 +4884,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 444573923}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548552109}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1001 &742472232
 PrefabInstance:
@@ -5282,7 +5619,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1250700555}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701262027}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1001 &823745040
 PrefabInstance:
@@ -5373,6 +5713,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2710203404384303901, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 1255856953}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &889515109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889515107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 889515110}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &889515110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 1255856953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889515107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &897811741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5571,7 +5988,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1638803209}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 897811744}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!224 &897811742 stripped
 RectTransform:
@@ -5583,6 +6003,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 897811741}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &897811744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378573508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 897811745}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &897811745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 897811741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378573508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904482478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6576,6 +7073,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 1322215401}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1164263924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164263923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1164263925}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1164263925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 1322215401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164263923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184132670
 GameObject:
   m_ObjectHideFlags: 0
@@ -6900,7 +7474,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2003640286}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 286115036}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1 &1249271097
 GameObject:
@@ -7252,7 +7829,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 906825940}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 889515109}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1 &1290514784
 GameObject:
@@ -7685,7 +8265,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1164263924}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
 --- !u!1001 &1360713002
 PrefabInstance:
@@ -8242,6 +8825,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 213121243}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565949579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565949578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1565949580}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1565949580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 213121243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565949578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1616021140 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6712792721527804382, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
@@ -9236,6 +9896,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1159325758}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 469389202}
     - targetCorrespondingSourceObject: {fileID: 8753193934911398406, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 993600932}
@@ -10283,6 +10946,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2710203404384303901, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 37384660}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1991458966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991458964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1991458967}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1991458967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 37384660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991458964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003640285
 GameObject:
   m_ObjectHideFlags: 0
@@ -11594,13 +12334,93 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6628108928460154813}
   m_SourcePrefab: {fileID: 100100000, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+--- !u!114 &6628108928460154811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4386683964486001072, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
+  m_PrefabInstance: {fileID: 6628108928460154810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628108928460154812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6533c787132c7724baca1499a93f4338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6628108928460154812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6176785272148932155, guid: e18f25ed0db3ae545a903aa459869aa2, type: 3}
   m_PrefabInstance: {fileID: 6628108928460154810}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6628108928460154813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628108928460154812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fabd8012960b60428eb6b2aeaa71d49, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6628108928460154811}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnTouchPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b93908d-6e09-4711-afa1-af4c75759732
+    m_ActionName: Game/Touch[/Device Simulator Touchscreen/press,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e3f7cf-b06d-42d3-a57a-03e0b1939399
+    m_ActionName: Game/Position[/Device Simulator Touchscreen/position,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b983493-c15e-4940-9457-23328b88818c
+    m_ActionName: Game/CharacterOne[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29d818a6-eafb-4c94-b317-976849972b01
+    m_ActionName: Game/CharacterTwo[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefbb6cc-ed62-4283-8398-789704988e0a
+    m_ActionName: Game/CharacterThree[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e495b6f-7240-4999-82f1-498439c1f225
+    m_ActionName: Game/CameraMove[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &7007250799192921855
 MonoBehaviour:
   m_ObjectHideFlags: 0
